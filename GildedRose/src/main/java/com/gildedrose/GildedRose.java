@@ -13,34 +13,41 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            switch (item.name) {
-                case SULFURAS:
-                    continue;
-
-                case AGED_BRIE:
-                    increaseQuality(item);
-                    break;
-                case BACKSTAGE:
-                    increaseQuality(item);
-                    if (item.sellIn < 11) increaseQuality(item);
-                    if (item.sellIn < 6) increaseQuality(item);
-                    break;
-                default:
-                    decreaseQuality(item);
-                    break;
+            if (!item.name.equals(SULFURAS)) {
+                updateItemQuality(item);
+                item.sellIn--;
+                if (item.sellIn < 0) handleExpiredItem(item);
             }
+        }
+    }
 
-            item.sellIn--;
+    private void updateItemQuality(Item item) {
+        switch (item.name) {
+            case AGED_BRIE:
+                increaseQuality(item);
+                break;
+            case BACKSTAGE:
+                updateBackstagePasses(item);
+                break;
+            default:
+                decreaseQuality(item);
+                break;
+        }
+    }
 
-            if (item.sellIn < 0) {
-                if (item.name.equals(AGED_BRIE)) {
-                    increaseQuality(item);
-                } else if (item.name.equals(BACKSTAGE)) {
-                    item.quality = 0;
-                } else {
-                    decreaseQuality(item);
-                }
-            }
+    private void updateBackstagePasses(Item item) {
+        increaseQuality(item);
+        if (item.sellIn < 11) increaseQuality(item);
+        if (item.sellIn < 6) increaseQuality(item);
+    }
+
+    private void handleExpiredItem(Item item) {
+        if (item.name.equals(AGED_BRIE)) {
+            increaseQuality(item);
+        } else if (item.name.equals(BACKSTAGE)) {
+            item.quality = 0;
+        } else {
+            decreaseQuality(item);
         }
     }
 
