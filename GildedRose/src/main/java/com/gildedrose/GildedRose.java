@@ -9,53 +9,50 @@ class GildedRose {
 
     static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     static final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
+    static final String AGED_BRIE = "Aged Brie";
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!item.name.equals("Aged Brie")
-                    && !item.name.equals(BACKSTAGE)) {
-                if (item.quality > 0 && !item.name.equals(SULFURAS)) {
-                        item.quality = item.quality - 1;
-                    }
+            switch (item.name) {
+                case SULFURAS:
+                    continue;
 
-            } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-
-                    if (item.name.equals(BACKSTAGE)) {
-                        if (item.sellIn < 11 && item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
-
-
-                        if (item.sellIn < 6 && item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
-
-                    }
-                }
+                case AGED_BRIE:
+                    increaseQuality(item);
+                    break;
+                case BACKSTAGE:
+                    increaseQuality(item);
+                    if (item.sellIn < 11) increaseQuality(item);
+                    if (item.sellIn < 6) increaseQuality(item);
+                    break;
+                default:
+                    decreaseQuality(item);
+                    break;
             }
 
-            if (!item.name.equals(SULFURAS)) {
-                item.sellIn = item.sellIn - 1;
-            }
+            item.sellIn--;
 
             if (item.sellIn < 0) {
-                if (!item.name.equals("Aged Brie")) {
-                    if (!item.name.equals(BACKSTAGE)) {
-                        if (item.quality > 0 && !item.name.equals(SULFURAS)) {
-                                item.quality = item.quality - 1;
-                            }
-
-                    } else {
-                        item.quality = 0;
-                    }
+                if (item.name.equals(AGED_BRIE)) {
+                    increaseQuality(item);
+                } else if (item.name.equals(BACKSTAGE)) {
+                    item.quality = 0;
                 } else {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
-                    }
+                    decreaseQuality(item);
                 }
             }
+        }
+    }
+
+    private void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality++;
+        }
+    }
+
+    private void decreaseQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality--;
         }
     }
 }
