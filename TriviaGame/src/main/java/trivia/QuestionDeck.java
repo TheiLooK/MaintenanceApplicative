@@ -31,4 +31,8 @@ public class QuestionDeck {
     public String askQuestion(String category) {
         return questions.get(category).poll();
     }
+
+    public Queue<String> getQuestionsByCategory(String category) {
+        return questions.get(category);
+    }
 }
