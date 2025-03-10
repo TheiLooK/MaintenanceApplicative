@@ -24,7 +24,8 @@ public class Game implements IGame {
       System.out.println("They have rolled a " + roll);
 
       if (currentPlayer.isInPenaltyBox()) {
-         if (roll % 2 != 0) {
+         boolean isGettingOutOfPenaltyBox = roll % 2 != 0;
+         if (isGettingOutOfPenaltyBox) {
             players.get(currentPlayerIndex).getOutOfPenaltyBox();
             System.out.println(currentPlayer.getName() + " is getting out of the penalty box");
          } else {
