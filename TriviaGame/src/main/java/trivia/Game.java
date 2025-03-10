@@ -3,7 +3,7 @@ package trivia;
 import java.util.*;
 
 public class Game implements IGame {
-   private static final int MAX_PLACES = 12;
+   private static final int MAX_POSITIONS = 12;
    private static final int WINNING_SCORE = 6;
 
    private final List<Player> players = new ArrayList<>();
@@ -33,7 +33,7 @@ public class Game implements IGame {
          }
       }
 
-      currentPlayer.move(roll, MAX_PLACES);
+      currentPlayer.move(roll, MAX_POSITIONS);
       System.out.println(currentPlayer.getName() + "'s new location is " + currentPlayer.getPosition());
       System.out.println("The category is " + questionDeck.getCategory(currentPlayer.getPosition()));
       askQuestion();
