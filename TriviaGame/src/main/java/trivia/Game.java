@@ -18,7 +18,6 @@ public class Game implements IGame {
       return true;
    }
 
-
    public void roll(int roll) {
       Player currentPlayer = players.get(currentPlayerIndex);
       System.out.println(currentPlayer.getName() + " is the current player");

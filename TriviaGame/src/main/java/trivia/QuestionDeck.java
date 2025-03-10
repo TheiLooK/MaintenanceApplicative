@@ -2,16 +2,13 @@ package trivia;
 
 import java.util.*;
 
-import static trivia.Const.*;
-
 public class QuestionDeck {
     private final Map<String, Queue<String>> questions = new HashMap<>();
 
     public QuestionDeck() {
-        questions.put(POP, createQuestions(POP));
-        questions.put(SCIENCE, createQuestions(SCIENCE));
-        questions.put(SPORTS, createQuestions(SPORTS));
-        questions.put(QUESTION_CATEGORY_ROCK, createQuestions(QUESTION_CATEGORY_ROCK));
+        for (Category category : Category.values()) {
+            questions.put(category.getDisplayName(), createQuestions(category.getDisplayName()));
+        }
     }
 
     private Queue<String> createQuestions(String category) {
@@ -24,10 +21,10 @@ public class QuestionDeck {
 
     public String getCategory(int position) {
         return switch ((position - 1) % 4) {
-            case 0 -> POP;
-            case 1 -> SCIENCE;
-            case 2 -> SPORTS;
-            default -> QUESTION_CATEGORY_ROCK;
+            case 0 -> Category.POP.getDisplayName();
+            case 1 -> Category.SCIENCE.getDisplayName();
+            case 2 -> Category.SPORTS.getDisplayName();
+            default -> Category.ROCK.getDisplayName();
         };
     }
 
