@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
-public class GameTest {
+class GameTest {
 	@Test
-	public void caracterizationTest() {
+	void caracterizationTest() {
 		// runs 10.000 "random" games to see the output of old and new code mathces
 		for (int seed = 1; seed < 10_000; seed++) {
 			testSeed(seed, false);
@@ -31,7 +31,7 @@ public class GameTest {
 
 	@Test
 	@Disabled("enable back and set a particular seed to see the output")
-	public void oneSeed() {
+	void oneSeed() {
 		testSeed(1, true);
 	}
 
