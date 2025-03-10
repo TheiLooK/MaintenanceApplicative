@@ -62,7 +62,7 @@ public class Game implements IGame {
       return true;
    }
 
-   public boolean wrongAnswer() {
+   public boolean handleWrongAnswer() {
       Player currentPlayer = players.get(currentPlayerIndex);
       System.out.println("Question was incorrectly answered");
       System.out.println(currentPlayer.getName() + " was sent to the penalty box");
