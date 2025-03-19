@@ -1,3 +1,5 @@
+package com.tpnote;
+
 import java.time.LocalDateTime;
 
 public class Event {
@@ -23,14 +25,11 @@ public class Event {
     }
 
     public String description() {
-        String desc = "";
-        if (type.equals("RDV_PERSONNEL")) {
-            desc = "RDV : " + title + " à " + dateDebut.toString();
-        } else if (type.equals("REUNION")) {
-            desc = "Réunion : " + title + " à " + lieu + " avec " + participants;
-        } else if (type.equals("PERIODIQUE")) {
-            desc = "Événement périodique : " + title + " tous les " + frequenceJours + " jours";
-        }
-        return desc;
+        return switch (type) {
+            case "RDV_PERSONNEL" -> STR."RDV : \{title} à \{dateDebut.toString()}";
+            case "REUNION" -> STR."Réunion : \{title} à \{lieu} avec \{participants}";
+            case "PERIODIQUE" -> STR."Événement périodique : \{title} tous les \{frequenceJours} jours";
+            default -> "";
+        };
     }
 }

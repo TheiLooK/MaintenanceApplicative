@@ -1,9 +1,13 @@
+package com.tpnote;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarManager {
     public List<Event> events;
+
+    static final String PERIODIQUE = "PERIODIQUE";
 
     public CalendarManager() {
         this.events = new ArrayList<>();
@@ -18,7 +22,7 @@ public class CalendarManager {
     public List<Event> eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
         List<Event> result = new ArrayList<>();
         for (Event e : events) {
-            if (e.type.equals("PERIODIQUE")) {
+            if (e.type.equals(PERIODIQUE)) {
                 LocalDateTime temp = e.dateDebut;
                 while (temp.isBefore(fin)) {
                     if (!temp.isBefore(debut)) {
@@ -38,14 +42,11 @@ public class CalendarManager {
         LocalDateTime fin1 = e1.dateDebut.plusMinutes(e1.dureeMinutes);
         LocalDateTime fin2 = e2.dateDebut.plusMinutes(e2.dureeMinutes);
 
-        if (e1.type.equals("PERIODIQUE") || e2.type.equals("PERIODIQUE")) {
+        if (e1.type.equals(PERIODIQUE) || e2.type.equals(PERIODIQUE)) {
             return false; // Simplification abusive
         }
 
-        if (e1.dateDebut.isBefore(fin2) && fin1.isAfter(e2.dateDebut)) {
-            return true;
-        }
-        return false;
+        return e1.dateDebut.isBefore(fin2) && fin1.isAfter(e2.dateDebut);
     }
 
     public void afficherEvenements() {
