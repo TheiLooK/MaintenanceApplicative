@@ -75,4 +75,12 @@ public class Game implements IGame {
    private void nextPlayer() {
       currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
    }
+
+    public Player getCurrentPlayer() {
+        return players.get(currentPlayerIndex);
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
 }

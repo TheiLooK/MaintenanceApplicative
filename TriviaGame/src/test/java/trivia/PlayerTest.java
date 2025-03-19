@@ -39,14 +39,11 @@ class PlayerTest {
     @Test
     void testMoveWrapAround() {
         Player player = new Player("John");
-        player.move(12, 12); // This should wrap around to position 12
+        player.move(12, 12);
         assertEquals(1, player.getPosition());
 
-        player.move(1, 12); // This should wrap around to position 1
-        assertEquals(2, player.getPosition());
-
-        player.move(3, 12); // This should wrap around to position 1
-        assertEquals(5, player.getPosition());
+        player.move(11, 12);
+        assertEquals(12, player.getPosition());
     }
 
 
