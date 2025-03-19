@@ -32,8 +32,6 @@ public class CalendarManager {
     }
 
     public void afficherEvenements() {
-        for (Event e : events) {
-            System.out.println(e.description());
-        }
+        events.events.stream().map(Event::description).forEach(System.out::println);
     }
 }
