@@ -33,6 +33,7 @@ public class DisplayEventsMonthAction extends Action {
         LocalDateTime debut = LocalDateTime.of(year, month, 1, 0, 0);
         LocalDateTime fin = debut.plusMonths(1);
 
+        DisplayService.getInstance().printTitre("Liste des événements du mois " + month + " :");
         calendarManager.eventsDansPeriode(debut, fin).events.stream().map(e -> e.description() + " : " + e.dateDebut).forEach(displayService::printTexte);
 
         DisplayService.getInstance().Continue();

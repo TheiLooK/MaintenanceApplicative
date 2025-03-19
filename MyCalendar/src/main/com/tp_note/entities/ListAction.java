@@ -26,6 +26,7 @@ public class ListAction extends Action {
     }
 
     public void afficherActions() {
+        DisplayService.getInstance().printEspace();
         DisplayService.getInstance().printSeparateur();
         DisplayService.getInstance().printTitre(name);
         IntStream.range(0, actions.size())

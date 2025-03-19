@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class DisplayEventMenuAction extends ListAction {
     public DisplayEventMenuAction() {
-        super("Menu Gestionnaire d'Événements", new ArrayList<>(java.util.List.of(
+        super("Menu de visualisation d'Événements", new ArrayList<>(java.util.List.of(
                 new DisplayEventsAction(),
                 new DisplayEventsMonthAction(),
                 new DisplayEventsWeekAction(),

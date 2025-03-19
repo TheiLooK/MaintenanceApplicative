@@ -10,7 +10,7 @@ import com.tp_note.services.DisplayService;
 
 public class LoginAction extends Action {
     public LoginAction() {
-        super("Login");
+        super("Se connecter");
     }
 
 

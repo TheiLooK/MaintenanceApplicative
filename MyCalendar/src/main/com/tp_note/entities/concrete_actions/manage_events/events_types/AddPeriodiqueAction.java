@@ -13,8 +13,13 @@ import java.time.LocalDateTime;
 
 public class AddPeriodiqueAction extends AddEventAction {
     public AddPeriodiqueAction() {
-        super("événement périodique");
-        this.event = createEvent();
+        super("Ajouter un événement périodique");
+    }
+
+    @Override
+    public void DO() {
+        event = createEvent();
+        super.DO();
     }
 
     @Override

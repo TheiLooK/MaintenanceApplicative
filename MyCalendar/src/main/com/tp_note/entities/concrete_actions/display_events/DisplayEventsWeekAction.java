@@ -33,6 +33,7 @@ public class DisplayEventsWeekAction extends Action {
         LocalDateTime debut = LocalDateTime.of(year, 1, 1, 0, 0).plusWeeks(week - 1);
         LocalDateTime fin = debut.plusWeeks(1);
 
+        DisplayService.getInstance().printTitre("Liste des événements de la semaine " + week + " de l'année " + year + " :");
         calendarManager.eventsDansPeriode(debut, fin).events.stream().map(e -> e.description() + " : " + e.dateDebut).forEach(displayService::printTexte);
 
         DisplayService.getInstance().Continue();

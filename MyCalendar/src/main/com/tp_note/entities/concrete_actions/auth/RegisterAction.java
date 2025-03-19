@@ -1,12 +1,13 @@
 package com.tp_note.entities.concrete_actions.auth;
 
 import com.tp_note.entities.Action;
+import com.tp_note.entities.concrete_actions.menus.LoginMenuAction;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
 public class RegisterAction extends Action {
     public RegisterAction() {
-        super("Register");
+        super("S'inscrire");
     }
 
     @Override
@@ -29,6 +30,6 @@ public class RegisterAction extends Action {
 
         displayService.printTexte("Vous êtes inscrit");
 
-        new LoginAction().DO();
+        new LoginMenuAction().DO();
     }
 }

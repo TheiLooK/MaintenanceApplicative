@@ -15,6 +15,5 @@ public class ManageEventMenuAction extends ListAction {
                 new AddPeriodiqueAction(),
                 new LogoutAction()
         )));
-
     }
 }

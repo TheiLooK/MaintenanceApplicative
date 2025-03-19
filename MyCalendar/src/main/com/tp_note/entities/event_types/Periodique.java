@@ -18,7 +18,7 @@ public class Periodique extends Event {
 
     @Override
     public String description() {
-        return String.format("Evenement periodique tous les %d jours", frequenceJours);
+        return String.format("%s le %s durée : %d minutes, période : %d jours", title.title(), dateDebut.toString(), dureeMinutes.duration(), frequenceJours);
     }
 
     @Override

@@ -12,6 +12,7 @@ public class DisplayEventsAction extends Action {
 
     @Override
     public void DO() {
+        DisplayService.getInstance().printTitre("Liste des événements :");
         AuthService.getInstance().getLoggedUser().calendar().afficherEvenements();
         DisplayService.getInstance().Continue();
         new DisplayEventMenuAction().DO();

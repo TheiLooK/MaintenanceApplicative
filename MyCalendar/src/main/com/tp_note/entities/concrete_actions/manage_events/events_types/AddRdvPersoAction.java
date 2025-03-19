@@ -13,8 +13,13 @@ import java.time.LocalDateTime;
 
 public class AddRdvPersoAction extends AddEventAction {
     public AddRdvPersoAction() {
-        super("rendez-vous personnel");
-        this.event = createEvent();
+        super("Ajouter un rendez-vous personnel");
+    }
+
+    @Override
+    public void DO() {
+        event = createEvent();
+        super.DO();
     }
 
     @Override

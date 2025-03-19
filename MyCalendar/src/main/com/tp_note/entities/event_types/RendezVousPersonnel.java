@@ -14,6 +14,6 @@ public class RendezVousPersonnel extends Event {
 
     @Override
     public String description() {
-        return "Rendez-vous personnel";
+        return title.title() + " le " + dateDebut.toString() + " durée : " + dureeMinutes.duration() + " minutes";
     }
 }

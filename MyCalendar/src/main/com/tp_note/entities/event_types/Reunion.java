@@ -21,6 +21,6 @@ public class Reunion extends Event {
 
     @Override
     public String description() {
-        return String.format("Reunion avec %s à %s", participants, lieu);
+        return String.format("%s le %s durée : %d minutes, lieu : %s, participants : %s", title.title(), dateDebut.toString(), dureeMinutes.duration(), lieu, participants);
     }
 }

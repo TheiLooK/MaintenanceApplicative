@@ -5,12 +5,12 @@ import com.tp_note.services.DisplayService;
 
 public class ExitAction extends Action {
     public ExitAction() {
-        super("Exit");
+        super("Quitter l'application");
     }
 
     @Override
     public void DO() {
-        DisplayService.getInstance().printTexte("Exiting...");
+        DisplayService.getInstance().printTexte("Fermeture de l'application...");
         DisplayService.getInstance().printBas();
         System.exit(0);
     }

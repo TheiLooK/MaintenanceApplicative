@@ -6,15 +6,11 @@ import com.tp_note.entities.concrete_actions.menus.ManageEventMenuAction;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
-import java.time.LocalDateTime;
-import java.util.Map;
-
 public abstract class AddEventAction extends Action {
     protected Event event;
 
     protected AddEventAction(String name) {
         super(name);
-        this.event = createEvent();
     }
 
     @Override

@@ -13,11 +13,12 @@ import java.util.Arrays;
 
 public class AddReunionAction extends AddEventAction {
     public AddReunionAction() {
-        super("réunion");
+        super("Ajouter une réunion");
     }
 
     @Override
     public void DO() {
+        event = createEvent();
         Reunion reunion = (Reunion) event;
         reunion.participants.forEach(participant -> AuthService.getInstance().getUser(participant).calendar().ajouterEvent(reunion));
         super.DO();
