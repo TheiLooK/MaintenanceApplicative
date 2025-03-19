@@ -2,6 +2,7 @@ package com.tpnote.entities.primitives;
 
 import com.tpnote.entities.Event;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,14 +26,6 @@ public class EventList {
     }
 
     public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
-    public List<Event> eventsInPeriod() {
         return events;
     }
 }

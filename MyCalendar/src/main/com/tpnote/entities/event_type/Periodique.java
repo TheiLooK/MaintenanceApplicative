@@ -1,4 +1,4 @@
-package com.tpnote.entities.primitives.event_type;
+package com.tpnote.entities.event_type;
 
 import com.tpnote.entities.Event;
 import com.tpnote.entities.primitives.EventDuration;

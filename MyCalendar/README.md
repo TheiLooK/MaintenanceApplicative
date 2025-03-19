@@ -1,5 +1,14 @@
 Mellano Louka IL1
 
+## Fonctionalités ajoutées :
+- Ajout d'un système connexions avec hachage des mots de passe
+
+
+
+# ---------------------------------------------------------------------
+# Sujet
+# ---------------------------------------------------------------------
+
 # 🗓️ TP Noté – Maintenance Applicative & TDD en Java
 Gestionnaire d'Événements & Calendrier
 

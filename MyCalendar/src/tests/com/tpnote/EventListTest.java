@@ -2,7 +2,7 @@ package com.tpnote;
 
 import com.tpnote.entities.Event;
 import com.tpnote.entities.primitives.*;
-import com.tpnote.entities.primitives.event_type.Reunion;
+import com.tpnote.entities.event_type.Reunion;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,26 +49,13 @@ class EventListTest {
         assertTrue(events.contains(event2));
     }
 
-    @Test
-    void testEventsInPeriod() {
-        EventList eventList = new EventList();
-        Event event = createSampleEvent();
-        eventList.addEvent(event);
-
-        List<Event> periodEvents = eventList.eventsInPeriod();
-        assertEquals(1, periodEvents.size());
-        assertTrue(periodEvents.contains(event));
-    }
-
     // Méthode utilitaire pour créer un événement
     private Event createSampleEvent() {
         EventTitle title = new EventTitle("Réunion de projet");
-        EventOwner owner = new EventOwner("Jean Dupont");
-        EventDate date = new EventDate(LocalDateTime.now());
+        EventOwner owner = new EventOwner(new User("Alice"));
         EventDuration duration = new EventDuration(60);
-        EventType event = new Reunion("Jeanne Durand", "Salle de réunion");
 
-        return new Event(event, title, owner, date, duration);
+        return new Reunion("Alice, Bob", "Salle 123", title, owner, LocalDateTime.now(), duration);
     }
 }
 
