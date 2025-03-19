@@ -26,9 +26,9 @@ public class Event {
 
     public String description() {
         return switch (type) {
-            case "RDV_PERSONNEL" -> STR."RDV : \{title} à \{dateDebut.toString()}";
-            case "REUNION" -> STR."Réunion : \{title} à \{lieu} avec \{participants}";
-            case "PERIODIQUE" -> STR."Événement périodique : \{title} tous les \{frequenceJours} jours";
+            case "RDV_PERSONNEL" -> String.format("RDV : %s à %s", title, dateDebut.toString());
+            case "REUNION" -> String.format("Réunion : %s à %s avec %s", title, lieu, participants);
+            case "PERIODIQUE" -> String.format("Événement périodique : %s tous les %d jours", title, frequenceJours);
             default -> "";
         };
     }
