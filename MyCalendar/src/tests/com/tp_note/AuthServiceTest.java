@@ -90,9 +90,9 @@ public class AuthServiceTest {
         assertDoesNotThrow(() -> authService.login("testUser", "password123"));
 
         LogInException exception = assertThrows(LogInException.class, () -> {
-            authService.login("testUser", "password123");
+            authService.login("testUser", "password1234");
         });
 
-        assertEquals("Un utilisateur est déjà connecté.", exception.getMessage());
+        assertEquals(IncorrectPasswordException.class, exception.getClass());
     }
 }

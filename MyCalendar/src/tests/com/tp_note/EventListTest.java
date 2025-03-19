@@ -52,10 +52,10 @@ class EventListTest {
     // Méthode utilitaire pour créer un événement
     private Event createSampleEvent() {
         EventTitle title = new EventTitle("Réunion de projet");
-        EventOwner owner = new EventOwner(new User("Alice"));
+        EventOwner owner = new EventOwner("Alice");
         EventDuration duration = new EventDuration(60);
 
-        return new Reunion("Alice, Bob", "Salle 123", title, owner, LocalDateTime.now(), duration);
+        return new Reunion(List.of("Alice","Bob"), "Salle 123", title, owner, LocalDateTime.now(), duration);
     }
 }
 
