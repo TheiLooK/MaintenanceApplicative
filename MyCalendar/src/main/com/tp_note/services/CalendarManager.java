@@ -4,7 +4,6 @@ import com.tp_note.entities.Event;
 import com.tp_note.entities.primitives.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class CalendarManager {
     public EventList events;

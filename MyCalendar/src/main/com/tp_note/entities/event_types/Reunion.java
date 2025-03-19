@@ -4,7 +4,6 @@ import com.tp_note.entities.Event;
 import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventOwner;
 import com.tp_note.entities.primitives.EventTitle;
-import com.tp_note.entities.primitives.User;
 
 import java.time.LocalDateTime;
 import java.util.List;
