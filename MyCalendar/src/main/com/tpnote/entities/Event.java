@@ -2,22 +2,24 @@ package com.tpnote.entities;
 
 import com.tpnote.entities.primitives.*;
 
-public class Event {
-    public final EventType type;
+import java.time.LocalDateTime;
+
+public abstract class Event {
     public final EventTitle title;
     public final EventOwner proprietaire;
-    public final EventDate dateDebut;
+    public final LocalDateTime dateDebut;
     public final EventDuration dureeMinutes;
 
-    public Event(EventType type, EventTitle title, EventOwner proprietaire, EventDate dateDebut, EventDuration dureeMinutes) {
-        this.type = type;
+    protected Event(EventTitle title, EventOwner proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
         this.title = title;
         this.proprietaire = proprietaire;
         this.dateDebut = dateDebut;
         this.dureeMinutes = dureeMinutes;
     }
 
-    public String description() {
-        return type.toString();
+    public abstract String description();
+
+    public boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+        return dateDebut.isAfter(debut) && dateDebut.isBefore(fin);
     }
 }
