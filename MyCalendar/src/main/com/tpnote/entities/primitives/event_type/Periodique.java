@@ -10,4 +10,9 @@ public class Periodique extends EventType {
         super(EventTypeEnum.PERIODIQUE);
         this.frequenceJours = frequenceJours;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Evenement periodique tous les %d jours", frequenceJours);
+    }
 }

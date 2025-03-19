@@ -12,4 +12,9 @@ public class Reunion extends EventType {
         this.participants = participants;
         this.lieu = lieu;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Reunion avec %s à %s", participants, lieu);
+    }
 }

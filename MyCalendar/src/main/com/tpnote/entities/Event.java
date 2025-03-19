@@ -1,8 +1,6 @@
 package com.tpnote.entities;
 
 import com.tpnote.entities.primitives.*;
-import com.tpnote.entities.primitives.event_type.Periodique;
-import com.tpnote.entities.primitives.event_type.Reunion;
 
 public class Event {
     public final EventType type;
@@ -20,16 +18,6 @@ public class Event {
     }
 
     public String description() {
-        return switch (type.type) {
-            case REUNION -> {
-                Reunion reunion = (Reunion) type;
-                yield String.format("Reunion avec %s à %s", reunion.participants, reunion.lieu);
-            }
-            case PERIODIQUE -> {
-                Periodique periodique = (Periodique) type;
-                yield String.format("Evenement periodique tous les %d jours", periodique.frequenceJours);
-            }
-            case RDV_PERSONNEL -> "Rendez-vous personnel";
-        };
+        return type.toString();
     }
 }

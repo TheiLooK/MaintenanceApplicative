@@ -1,8 +1,8 @@
 package com.tpnote;
 
 import com.tpnote.entities.Event;
-import com.tpnote.entities.enums.EventTypeEnum;
 import com.tpnote.entities.primitives.*;
+import com.tpnote.entities.primitives.event_type.Reunion;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -62,13 +62,13 @@ class EventListTest {
 
     // Méthode utilitaire pour créer un événement
     private Event createSampleEvent() {
-        EventType type = new EventType(EventTypeEnum.REUNION);
         EventTitle title = new EventTitle("Réunion de projet");
         EventOwner owner = new EventOwner("Jean Dupont");
         EventDate date = new EventDate(LocalDateTime.now());
         EventDuration duration = new EventDuration(60);
+        EventType event = new Reunion("Jeanne Durand", "Salle de réunion");
 
-        return new Event(type, title, owner, date, duration);
+        return new Event(event, title, owner, date, duration);
     }
 }
 

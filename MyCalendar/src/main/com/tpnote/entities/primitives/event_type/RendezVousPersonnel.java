@@ -7,4 +7,9 @@ public class RendezVousPersonnel extends EventType {
     public RendezVousPersonnel() {
         super(EventTypeEnum.RDV_PERSONNEL);
     }
+
+    @Override
+    public String toString() {
+        return "Rendez-vous personnel";
+    }
 }
