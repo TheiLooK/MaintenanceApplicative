@@ -1,5 +1,7 @@
 package com.tpnote;
 
+import com.tpnote.entities.Event;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
