@@ -1,11 +1,8 @@
 package com.tp_note.entities.concrete_actions.menus;
 
-import com.tp_note.entities.concrete_actions.manage_events.events_types.AddBirthdayAction;
+import com.tp_note.entities.concrete_actions.manage_events.events_types.*;
 import com.tp_note.entities.lists.ActionList;
 import com.tp_note.entities.concrete_actions.auth.LogoutAction;
-import com.tp_note.entities.concrete_actions.manage_events.events_types.AddPeriodiqueAction;
-import com.tp_note.entities.concrete_actions.manage_events.events_types.AddRdvPersoAction;
-import com.tp_note.entities.concrete_actions.manage_events.events_types.AddReunionAction;
 
 public class ManageEventMenuActionList extends ActionList {
     private static ManageEventMenuActionList instance;
@@ -17,6 +14,9 @@ public class ManageEventMenuActionList extends ActionList {
                 AddReunionAction.getInstance(),
                 AddPeriodiqueAction.getInstance(),
                 AddBirthdayAction.getInstance(),
+                AddConferenceEventAction.getInstance(),
+                AddMedicalAppointmentAction.getInstance(),
+                AddTaskAction.getInstance(),
                 LogoutAction.getInstance()
         )));
     }
