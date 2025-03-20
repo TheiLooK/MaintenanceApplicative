@@ -1,7 +1,7 @@
 package com.tp_note.entities.concrete_actions.display_events;
 
 import com.tp_note.entities.Action;
-import com.tp_note.entities.concrete_actions.menus.DisplayEventMenuAction;
+import com.tp_note.entities.concrete_actions.menus.DisplayEventMenuActionList;
 import com.tp_note.services.CalendarManager;
 import com.tp_note.services.DisplayService;
 
@@ -22,7 +22,7 @@ public class DisplayEventsWeekAction extends Action {
     }
 
     @Override
-    public void DO() {
+    public void perform() {
         DisplayService displayService = DisplayService.getInstance();
 
         int year = displayService.printInputInt("Entrez l'année (AAAA) : ");
@@ -37,13 +37,13 @@ public class DisplayEventsWeekAction extends Action {
             week = displayService.printInputInt("Entrez le numéro de la semaine (1-52) : ");
         }
 
-        LocalDateTime debut = LocalDateTime.of(year, 1, 1, 0, 0).plusWeeks(week - 1);
+        LocalDateTime start = LocalDateTime.of(year, 1, 1, 0, 0).plusWeeks(week - 1);
 
         DisplayService.getInstance().printTitre("Liste des événements de la semaine " + week + " de l'année " + year + " :");
-        CalendarManager.getInstance().eventsDansPeriode(debut, debut.plusWeeks(1)).afficher();
+        CalendarManager.getInstance().eventsDansPeriode(start, start.plusWeeks(1)).display();
 
 
-        DisplayService.getInstance().Continue();
-        DisplayEventMenuAction.getInstance().DO();
+        DisplayService.getInstance().pressEnter();
+        DisplayEventMenuActionList.getInstance().perform();
     }
 }

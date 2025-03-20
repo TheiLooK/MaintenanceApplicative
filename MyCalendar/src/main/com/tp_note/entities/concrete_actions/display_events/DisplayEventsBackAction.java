@@ -1,7 +1,7 @@
 package com.tp_note.entities.concrete_actions.display_events;
 
 import com.tp_note.entities.Action;
-import com.tp_note.entities.concrete_actions.menus.ManageEventMenuAction;
+import com.tp_note.entities.concrete_actions.menus.ManageEventMenuActionList;
 
 public class DisplayEventsBackAction extends Action {
     private static DisplayEventsBackAction instance;
@@ -18,7 +18,7 @@ public class DisplayEventsBackAction extends Action {
     }
 
     @Override
-    public void DO() {
-        ManageEventMenuAction.getInstance().DO();
+    public void perform() {
+        ManageEventMenuActionList.getInstance().perform();
     }
 }

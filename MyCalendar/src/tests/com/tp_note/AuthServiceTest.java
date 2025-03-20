@@ -31,14 +31,14 @@ class AuthServiceTest {
     @Test
     void testRegister() {
         authService.register("testUser", "password123");
-        assertDoesNotThrow(() -> authService.login("testUser", "password123"));
+        assertDoesNotThrow(() -> authService.logIn("testUser", "password123"));
     }
 
     @Test
-    void testLoginSuccess() {
+    void testLogInSuccess() {
         authService.register("testUser", "password123");
         
-        assertDoesNotThrow(() -> authService.login("testUser", "password123"));
+        assertDoesNotThrow(() -> authService.logIn("testUser", "password123"));
         
         User loggedUser = authService.getLoggedUser();
         assertNotNull(loggedUser);
@@ -46,20 +46,20 @@ class AuthServiceTest {
     }
 
     @Test
-    void testLoginUserNotFound() {
+    void testLogInUserNotFound() {
         Exception exception = assertThrows(UserNotFoundException.class, () -> {
-            authService.login("unknownUser", "password123");
+            authService.logIn("unknownUser", "password123");
         });
 
         assertEquals(UserNotFoundException.class, exception.getClass());
     }
 
     @Test
-    void testLoginIncorrectPassword() {
+    void testLogInIncorrectPassword() {
         authService.register("testUser", "correctPassword");
         
         Exception exception = assertThrows(IncorrectPasswordException.class, () -> {
-            authService.login("testUser", "wrongPassword");
+            authService.logIn("testUser", "wrongPassword");
         });
 
         assertEquals(IncorrectPasswordException.class, exception.getClass());
@@ -68,7 +68,7 @@ class AuthServiceTest {
     @Test
     void testLogout() {
         authService.register("testUser", "password123");
-        assertDoesNotThrow(() -> authService.login("testUser", "password123"));
+        assertDoesNotThrow(() -> authService.logIn("testUser", "password123"));
 
         authService.logOut();
         assertNull(authService.getLoggedUser());
@@ -77,7 +77,7 @@ class AuthServiceTest {
     @Test
     void testGetLoggedUser() {
         authService.register("testUser", "password123");
-        assertDoesNotThrow(() -> authService.login("testUser", "password123"));
+        assertDoesNotThrow(() -> authService.logIn("testUser", "password123"));
 
         User loggedUser = authService.getLoggedUser();
         assertNotNull(loggedUser);
@@ -85,12 +85,12 @@ class AuthServiceTest {
     }
 
     @Test
-    void testLoginTwice() {
+    void testLogInTwice() {
         authService.register("testUser", "password123");
-        assertDoesNotThrow(() -> authService.login("testUser", "password123"));
+        assertDoesNotThrow(() -> authService.logIn("testUser", "password123"));
 
         LogInException exception = assertThrows(LogInException.class, () -> {
-            authService.login("testUser", "password1234");
+            authService.logIn("testUser", "password1234");
         });
 
         assertEquals(IncorrectPasswordException.class, exception.getClass());

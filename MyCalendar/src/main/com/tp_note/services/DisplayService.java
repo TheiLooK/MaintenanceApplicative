@@ -76,8 +76,15 @@ public class DisplayService {
         String texte = String.format("║ %s ", message);
         System.out.print(texte);
 
-        int value = scanner.nextInt();
-        scanner.nextLine();
+        int value;
+        try {
+            value = scanner.nextInt();
+            scanner.nextLine();
+        } catch (Exception e) {
+            scanner.nextLine();
+            this.printTexte("La valeur entrée n'est pas un nombre entier");
+            return this.printInputInt(message);
+        }
 
         return value;
     }
@@ -106,7 +113,7 @@ public class DisplayService {
         );
     }
 
-    public void Continue() {
+    public void pressEnter() {
         this.printTexte("Appuyez sur Entrée pour continuer");
         this.scanner.nextLine();
     }

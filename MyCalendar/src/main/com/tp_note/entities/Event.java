@@ -19,7 +19,7 @@ public abstract class Event {
 
     public abstract String description();
 
-    public boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+    public boolean isInPeriod(LocalDateTime debut, LocalDateTime fin) {
         return dateDebut.isAfter(debut) && dateDebut.isBefore(fin);
     }
 

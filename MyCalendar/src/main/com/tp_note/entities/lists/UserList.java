@@ -5,10 +5,10 @@ import com.tp_note.entities.primitives.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListUser {
+public class UserList {
     private final List<User> users;
 
-    public ListUser(String list) {
+    public UserList(String list) {
         this.users = new ArrayList<>();
         for (String user : list.split(",")) {
             users.add(new User(user));

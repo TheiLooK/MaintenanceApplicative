@@ -9,7 +9,7 @@ public class ExitAction extends Action {
     }
 
     @Override
-    public void DO() {
+    public void perform() {
         DisplayService.getInstance().printTexte("Fermeture de l'application...");
         DisplayService.getInstance().printBas();
         System.exit(0);

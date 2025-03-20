@@ -1,17 +1,17 @@
 package com.tp_note.entities.concrete_actions.menus;
 
-import com.tp_note.entities.lists.ListAction;
+import com.tp_note.entities.lists.ActionList;
 import com.tp_note.entities.concrete_actions.auth.LogoutAction;
 import com.tp_note.entities.concrete_actions.manage_events.events_types.AddPeriodiqueAction;
 import com.tp_note.entities.concrete_actions.manage_events.events_types.AddRdvPersoAction;
 import com.tp_note.entities.concrete_actions.manage_events.events_types.AddReunionAction;
 
-public class ManageEventMenuAction extends ListAction {
-    private static ManageEventMenuAction instance;
+public class ManageEventMenuActionList extends ActionList {
+    private static ManageEventMenuActionList instance;
 
-    private ManageEventMenuAction() {
+    private ManageEventMenuActionList() {
         super("Menu Gestionnaire d'Événements", new java.util.ArrayList<>(java.util.List.of(
-                DisplayEventMenuAction.getInstance(),
+                DisplayEventMenuActionList.getInstance(),
                 AddRdvPersoAction.getInstance(),
                 AddReunionAction.getInstance(),
                 AddPeriodiqueAction.getInstance(),
@@ -19,9 +19,9 @@ public class ManageEventMenuAction extends ListAction {
         )));
     }
 
-    public static ManageEventMenuAction getInstance() {
+    public static ManageEventMenuActionList getInstance() {
         if (instance == null) {
-            instance = new ManageEventMenuAction();
+            instance = new ManageEventMenuActionList();
         }
         return instance;
     }

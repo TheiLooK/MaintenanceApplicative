@@ -7,9 +7,9 @@ import com.tp_note.entities.primitives.User;
 
 import java.time.LocalDateTime;
 
-public class RendezVousPersonnel extends Event {
-    public RendezVousPersonnel(EventTitle title, User proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
-        super(title, proprietaire, dateDebut, dureeMinutes);
+public class PersonalEvent extends Event {
+    public PersonalEvent(EventTitle title, User owner, LocalDateTime dateDebut, EventDuration duration) {
+        super(title, owner, dateDebut, duration);
     }
 
     @Override

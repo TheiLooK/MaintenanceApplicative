@@ -1,7 +1,7 @@
 package com.tp_note.entities.concrete_actions.auth;
 
 import com.tp_note.entities.Action;
-import com.tp_note.entities.concrete_actions.menus.LoginMenuAction;
+import com.tp_note.entities.concrete_actions.menus.LoginMenuActionList;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
@@ -20,9 +20,9 @@ public class LogoutAction extends Action {
     }
 
     @Override
-    public void DO() {
+    public void perform() {
         AuthService.getInstance().logOut();
         DisplayService.getInstance().printTexte("Vous êtes déconnecté");
-        LoginMenuAction.getInstance().DO();
+        LoginMenuActionList.getInstance().perform();
     }
 }

@@ -1,7 +1,7 @@
 package com.tp_note.entities.concrete_actions.display_events;
 
 import com.tp_note.entities.Action;
-import com.tp_note.entities.concrete_actions.menus.DisplayEventMenuAction;
+import com.tp_note.entities.concrete_actions.menus.DisplayEventMenuActionList;
 import com.tp_note.services.CalendarManager;
 import com.tp_note.services.DisplayService;
 
@@ -22,7 +22,7 @@ public class DisplayEventsMonthAction extends Action {
     }
 
     @Override
-    public void DO() {
+    public void perform() {
         DisplayService displayService = DisplayService.getInstance();
 
         int year = displayService.printInputInt("Entrez l'année (AAAA) : ");
@@ -37,12 +37,12 @@ public class DisplayEventsMonthAction extends Action {
             month = displayService.printInputInt("Entrez le numéro du mois (1-12) : ");
         }
 
-        LocalDateTime debut = LocalDateTime.of(year, month, 1, 0, 0);
+        LocalDateTime start = LocalDateTime.of(year, month, 1, 0, 0);
 
         DisplayService.getInstance().printTitre("Liste des événements du mois " + month + " :");
-        CalendarManager.getInstance().eventsDansPeriode(debut, debut.plusMonths(1)).afficher();
+        CalendarManager.getInstance().eventsDansPeriode(start, start.plusMonths(1)).display();
 
-        DisplayService.getInstance().Continue();
-        DisplayEventMenuAction.getInstance().DO();
+        DisplayService.getInstance().pressEnter();
+        DisplayEventMenuActionList.getInstance().perform();
     }
 }

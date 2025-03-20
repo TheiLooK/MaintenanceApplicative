@@ -1,7 +1,7 @@
 package com.tp_note.entities.concrete_actions.display_events;
 
 import com.tp_note.entities.Action;
-import com.tp_note.entities.concrete_actions.menus.DisplayEventMenuAction;
+import com.tp_note.entities.concrete_actions.menus.DisplayEventMenuActionList;
 import com.tp_note.services.CalendarManager;
 import com.tp_note.services.DisplayService;
 
@@ -20,10 +20,10 @@ public class DisplayEventsAction extends Action {
     }
 
     @Override
-    public void DO() {
+    public void perform() {
         DisplayService.getInstance().printTitre("Liste des événements :");
-        CalendarManager.getInstance().getEventList().afficher();
-        DisplayService.getInstance().Continue();
-        DisplayEventMenuAction.getInstance().DO();
+        CalendarManager.getInstance().getEventList().display();
+        DisplayService.getInstance().pressEnter();
+        DisplayEventMenuActionList.getInstance().perform();
     }
 }

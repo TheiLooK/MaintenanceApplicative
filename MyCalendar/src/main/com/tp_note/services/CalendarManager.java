@@ -2,17 +2,17 @@ package com.tp_note.services;
 
 import com.tp_note.entities.Event;
 import com.tp_note.entities.primitives.User;
-import com.tp_note.entities.lists.ListEvent;
+import com.tp_note.entities.lists.EventList;
 
 import java.time.LocalDateTime;
 
 public class CalendarManager {
-    private final ListEvent events;
+    private final EventList events;
 
     private static CalendarManager instance = null;
 
     public CalendarManager() {
-        this.events = new ListEvent();
+        this.events = new EventList();
     }
 
     public static CalendarManager getInstance() {
@@ -22,27 +22,27 @@ public class CalendarManager {
         return instance;
     }
 
-    public ListEvent eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
-        return new ListEvent(
+    public EventList eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+        return new EventList(
                 getEventList().getEvents().stream()
-                .filter(e -> e.estDansPeriode(debut, fin))
+                .filter(e -> e.isInPeriod(debut, fin))
                 .toList()
         );
     }
 
-    public void ajouterEvent(Event e) {
+    public void addEvent(Event e) {
         events.addEvent(e);
     }
 
-    private ListEvent getEventList(User user) {
-        return new ListEvent(
+    private EventList getEventList(User user) {
+        return new EventList(
                 events.getEvents().stream()
                 .filter(e -> e.hasAccess(user))
                 .toList()
         );
     }
 
-    public ListEvent getEventList() {
+    public EventList getEventList() {
         return getEventList(AuthService.getInstance().getLoggedUser());
     }
 }

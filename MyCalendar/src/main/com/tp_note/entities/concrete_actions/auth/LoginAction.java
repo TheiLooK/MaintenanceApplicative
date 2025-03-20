@@ -1,8 +1,8 @@
 package com.tp_note.entities.concrete_actions.auth;
 
 import com.tp_note.entities.Action;
-import com.tp_note.entities.concrete_actions.menus.LoginMenuAction;
-import com.tp_note.entities.concrete_actions.menus.ManageEventMenuAction;
+import com.tp_note.entities.concrete_actions.menus.LoginMenuActionList;
+import com.tp_note.entities.concrete_actions.menus.ManageEventMenuActionList;
 import com.tp_note.exceptions.auth.LogInException;
 import com.tp_note.exceptions.auth.log_in.IncorrectPasswordException;
 import com.tp_note.services.AuthService;
@@ -23,7 +23,7 @@ public class LoginAction extends Action {
     }
 
     @Override
-    public void DO() {
+    public void perform() {
         AuthService authService = AuthService.getInstance();
         DisplayService displayService = DisplayService.getInstance();
 
@@ -41,17 +41,17 @@ public class LoginAction extends Action {
         }
 
         try {
-            authService.login(login, password);
+            authService.logIn(login, password);
             displayService.printTexte("Vous êtes connecté");
         } catch (IncorrectPasswordException e) {
             displayService.printTexte("Mot de passe incorrect");
-            LoginMenuAction.getInstance().DO();
+            LoginMenuActionList.getInstance().perform();
             return;
         } catch (LogInException e) {
             displayService.printTexte("Login incorrect");
-            LoginMenuAction.getInstance().DO();
+            LoginMenuActionList.getInstance().perform();
             return;
         }
-        ManageEventMenuAction.getInstance().DO();
+        ManageEventMenuActionList.getInstance().perform();
     }
 }

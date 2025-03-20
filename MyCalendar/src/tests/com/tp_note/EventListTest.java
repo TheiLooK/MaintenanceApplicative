@@ -2,9 +2,9 @@ package com.tp_note;
 
 import com.tp_note.entities.Event;
 import com.tp_note.entities.primitives.*;
-import com.tp_note.entities.event_types.Reunion;
-import com.tp_note.entities.lists.ListEvent;
-import com.tp_note.entities.lists.ListUser;
+import com.tp_note.entities.event_types.MeetingEvent;
+import com.tp_note.entities.lists.EventList;
+import com.tp_note.entities.lists.UserList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +15,7 @@ class EventListTest {
 
     @Test
     void testAddEvent() {
-        ListEvent eventList = new ListEvent();
+        EventList eventList = new EventList();
         Event event = createSampleEvent();
 
         eventList.addEvent(event);
@@ -26,7 +26,7 @@ class EventListTest {
 
     @Test
     void testRemoveEvent() {
-        ListEvent eventList = new ListEvent();
+        EventList eventList = new EventList();
         Event event = createSampleEvent();
 
         eventList.addEvent(event);
@@ -38,7 +38,7 @@ class EventListTest {
 
     @Test
     void testGetEvents() {
-        ListEvent eventList = new ListEvent();
+        EventList eventList = new EventList();
         Event event1 = createSampleEvent();
         Event event2 = createSampleEvent();
 
@@ -57,7 +57,7 @@ class EventListTest {
         User owner = new User("Alice");
         EventDuration duration = new EventDuration(60);
 
-        return new Reunion(new ListUser("Alice,Bob"), "Salle 123", title, owner, LocalDateTime.now(), duration);
+        return new MeetingEvent(new UserList("Alice,Bob"), new MeetingEventPlace("Salle 105"), title, owner, LocalDateTime.now(), duration);
     }
 }
 

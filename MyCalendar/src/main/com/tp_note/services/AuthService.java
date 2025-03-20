@@ -28,7 +28,7 @@ public class AuthService {
         return instance;
     }
 
-    public void login(String username, String password) throws LogInException {
+    public void logIn(String username, String password) throws LogInException {
         Auth getUser = auths.stream().filter(auth -> auth.username.name().equals(username)).findFirst().orElse(null);
 
         if (getUser == null) {

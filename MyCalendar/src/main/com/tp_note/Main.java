@@ -1,6 +1,6 @@
 package com.tp_note;
 
-import com.tp_note.entities.concrete_actions.menus.LoginMenuAction;
+import com.tp_note.entities.concrete_actions.menus.LoginMenuActionList;
 import com.tp_note.services.DisplayService;
 
 public class Main {
@@ -19,6 +19,6 @@ public class Main {
         displayService.printEspace();
         displayService.printSeparateur();
 
-        LoginMenuAction.getInstance().DO();
+        LoginMenuActionList.getInstance().perform();
     }
 }

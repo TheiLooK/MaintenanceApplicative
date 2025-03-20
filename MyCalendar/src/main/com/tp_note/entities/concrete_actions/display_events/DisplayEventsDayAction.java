@@ -1,7 +1,7 @@
 package com.tp_note.entities.concrete_actions.display_events;
 
 import com.tp_note.entities.Action;
-import com.tp_note.entities.concrete_actions.menus.DisplayEventMenuAction;
+import com.tp_note.entities.concrete_actions.menus.DisplayEventMenuActionList;
 import com.tp_note.services.CalendarManager;
 import com.tp_note.services.DisplayService;
 
@@ -22,7 +22,7 @@ public class DisplayEventsDayAction extends Action {
     }
 
     @Override
-    public void DO() {
+    public void perform() {
         String stringDate = DisplayService.getInstance().printInputString("Entrez la date de la réunion (format : jj/mm/aaaa) : ");
         // Si la date n'est pas valide, on demande à l'utilisateur de recommencer (avec jj comrpis entre 01 et 31, mm entre 01 et 12 et aaaa entre 1000 et 9999)
         while (!stringDate.matches("([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/([1-9][0-9]{3})")) {
@@ -37,9 +37,9 @@ public class DisplayEventsDayAction extends Action {
                 0, 0
         );
 
-        CalendarManager.getInstance().eventsDansPeriode(date, date.plusDays(1)).afficher();
+        CalendarManager.getInstance().eventsDansPeriode(date, date.plusDays(1)).display();
 
-        DisplayService.getInstance().Continue();
-        DisplayEventMenuAction.getInstance().DO();
+        DisplayService.getInstance().pressEnter();
+        DisplayEventMenuActionList.getInstance().perform();
     }
 }

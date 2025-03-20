@@ -2,7 +2,7 @@ package com.tp_note.entities.concrete_actions.manage_events.events_types;
 
 import com.tp_note.entities.Event;
 import com.tp_note.entities.concrete_actions.manage_events.AddEventAction;
-import com.tp_note.entities.event_types.RendezVousPersonnel;
+import com.tp_note.entities.event_types.PersonalEvent;
 import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.services.AuthService;
@@ -25,9 +25,9 @@ public class AddRdvPersoAction extends AddEventAction {
     }
 
     @Override
-    public void DO() {
+    public void perform() {
         event = createEvent();
-        super.DO();
+        super.perform();
     }
 
     @Override
@@ -36,19 +36,18 @@ public class AddRdvPersoAction extends AddEventAction {
 
         displayService.printTexte("Ajout d'un rendez-vous personnel");
 
-        String titre = displayService.printInputString("Entrez le titre du rendes-vous : ");
+        String title = displayService.printInputString("Entrez le titre du rendes-vous : ");
         LocalDateTime date = displayService.printInputDate();
-        String dureeMinutes = displayService.printInputString("Entrez la durée du rendez-vous en minutes : ");
+        int duration = displayService.printInputInt("Entrez la durée du rendez-vous en minutes : ");
 
         // Spécification au rendez-vous personnel :
         // Rien pour l'instant
 
-        return new RendezVousPersonnel(
-                new EventTitle(titre),
-                AuthService.getInstance().getLoggedUser(),
-                date,
-                new EventDuration(Integer.parseInt(dureeMinutes)
-            )
+        return new PersonalEvent(
+            new EventTitle(title),
+            AuthService.getInstance().getLoggedUser(),
+            date,
+            new EventDuration(duration)
         );
     }
 }

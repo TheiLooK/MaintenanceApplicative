@@ -6,14 +6,14 @@ import com.tp_note.services.DisplayService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListEvent {
+public class EventList {
     private final List<Event> events;
 
-    public ListEvent(List<Event> events) {
+    public EventList(List<Event> events) {
         this.events = events;
     }
 
-    public ListEvent() {
+    public EventList() {
         this.events = new ArrayList<>();
     }
 
@@ -29,7 +29,7 @@ public class ListEvent {
         return events;
     }
 
-    public void afficher() {
+    public void display() {
         events.forEach(e -> DisplayService.getInstance().printTexte(e.description()));
     }
 }

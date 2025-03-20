@@ -1,10 +1,11 @@
 package com.tp_note.entities.concrete_actions.manage_events.events_types;
 
 import com.tp_note.entities.concrete_actions.manage_events.AddEventAction;
-import com.tp_note.entities.event_types.Reunion;
+import com.tp_note.entities.event_types.MeetingEvent;
 import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventTitle;
-import com.tp_note.entities.lists.ListUser;
+import com.tp_note.entities.lists.UserList;
+import com.tp_note.entities.primitives.MeetingEventPlace;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
@@ -26,20 +27,20 @@ public class AddReunionAction extends AddEventAction {
     }
 
     @Override
-    public void DO() {
+    public void perform() {
         event = createEvent();
-        super.DO();
+        super.perform();
     }
 
     @Override
-    public Reunion createEvent() {
+    public MeetingEvent createEvent() {
         DisplayService displayService = DisplayService.getInstance();
 
         displayService.printTexte("Ajout d'une réunion");
 
-        String titre = displayService.printInputString("Entrez le titre de la réunion : ");
+        String title = displayService.printInputString("Entrez le titre de la réunion : ");
         LocalDateTime date = displayService.printInputDate();
-        String dureeMinutes = displayService.printInputString("Entrez la durée de la réunion en minutes : ");
+        int duration = displayService.printInputInt("Entrez la durée de la réunion en minutes : ");
 
         // Spécification de la réunion :
         String participants = displayService.printInputString("Entrez les participants de la réunion (séparés par des virgules) : ");
@@ -48,15 +49,15 @@ public class AddReunionAction extends AddEventAction {
             displayService.printTexte("Un des participants n'existe pas, veuillez réessayer");
             participants = displayService.printInputString("Entrez les participants de la réunion (séparés par des virgules ex: Jean,Michel) : ");
         }
-        String lieu = displayService.printInputString("Entrez le lieu de la réunion : ");
+        String place = displayService.printInputString("Entrez le lieu de la réunion : ");
 
-        return new Reunion(
-                new ListUser(participants),
-                lieu,
-                new EventTitle(titre),
-                AuthService.getInstance().getLoggedUser(),
-                date,
-                new EventDuration(Integer.parseInt(dureeMinutes))
+        return new MeetingEvent(
+            new UserList(participants),
+            new MeetingEventPlace(place),
+            new EventTitle(title),
+            AuthService.getInstance().getLoggedUser(),
+            date,
+            new EventDuration(duration)
         );
     }
 }
