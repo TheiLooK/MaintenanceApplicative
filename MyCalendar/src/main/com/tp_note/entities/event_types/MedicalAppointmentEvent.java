@@ -4,6 +4,7 @@ import com.tp_note.entities.Event;
 import com.tp_note.entities.primitives.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class MedicalAppointmentEvent extends Event {
     private Doctor doctor;
@@ -17,6 +18,16 @@ public class MedicalAppointmentEvent extends Event {
 
     @Override
     public String description() {
-        return "";
+        List<String> content = List.of(
+                "Titre : " + title.title(),
+                "Propriétaire : " + proprietaire.name(),
+                "Date : " + dateDebut.toLocalDate(),
+                "Heure : " + dateDebut.toLocalTime().toString().substring(0, 5),
+                "Durée : " + dureeMinutes.duration() + " minutes",
+                "Docteur : " + doctor,
+                "Lieu : " + place
+        );
+
+        return generateDescription(content, "Rendez-vous Médical");
     }
 }

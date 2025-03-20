@@ -8,6 +8,7 @@ import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.entities.primitives.User;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ConferenceEvent extends Event {
     private final UserList speakers;
@@ -21,6 +22,16 @@ public class ConferenceEvent extends Event {
 
     @Override
     public String description() {
-        return "";
+        List<String> content = List.of(
+                "Titre : " + title.title(),
+                "Propriétaire : " + proprietaire.name(),
+                "Date : " + dateDebut.toLocalDate(),
+                "Heure : " + dateDebut.toLocalTime().toString().substring(0, 5),
+                "Durée : " + dureeMinutes.duration() + " minutes",
+                "Intervenants : " + speakers,
+                "Lieu : " + place
+        );
+
+        return generateDescription(content, "Conférence");
     }
 }

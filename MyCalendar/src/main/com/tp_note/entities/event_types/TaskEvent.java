@@ -7,6 +7,7 @@ import com.tp_note.entities.primitives.TaskData;
 import com.tp_note.entities.primitives.User;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class TaskEvent extends Event {
     private TaskData task;
@@ -18,6 +19,16 @@ public class TaskEvent extends Event {
 
     @Override
     public String description() {
-        return "";
+        List<String> content = List.of(
+                "Titre : " + title.title(),
+                "Propriétaire : " + proprietaire.name(),
+                "Date : " + dateDebut.toLocalDate(),
+                "Heure : " + dateDebut.toLocalTime().toString().substring(0, 5),
+                "Durée : " + dureeMinutes.duration() + " minutes",
+                "Tâche : " + task.getDescription(),
+                "Statut : " + (task.isDone() ? "Terminé" : "Non terminé")
+        );
+
+        return generateDescription(content, "Tâche");
     }
 }
