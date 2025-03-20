@@ -7,7 +7,6 @@ import com.tp_note.entities.primitives.PeriodicEventFrequency;
 import com.tp_note.entities.primitives.User;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 

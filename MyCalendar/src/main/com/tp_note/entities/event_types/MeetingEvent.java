@@ -8,7 +8,6 @@ import com.tp_note.entities.primitives.User;
 import com.tp_note.entities.lists.UserList;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MeetingEvent extends Event {
