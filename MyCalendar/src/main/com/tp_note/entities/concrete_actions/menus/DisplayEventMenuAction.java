@@ -1,6 +1,6 @@
 package com.tp_note.entities.concrete_actions.menus;
 
-import com.tp_note.entities.ListAction;
+import com.tp_note.entities.lists.ListAction;
 import com.tp_note.entities.concrete_actions.display_events.*;
 
 import java.util.ArrayList;

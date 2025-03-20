@@ -1,18 +1,19 @@
-package com.tp_note.entities.primitives;
+package com.tp_note.entities.lists;
 
 import com.tp_note.entities.Event;
+import com.tp_note.services.DisplayService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventList {
-    public List<Event> events;
+public class ListEvent {
+    private final List<Event> events;
 
-    public EventList(List<Event> events) {
+    public ListEvent(List<Event> events) {
         this.events = events;
     }
 
-    public EventList() {
+    public ListEvent() {
         this.events = new ArrayList<>();
     }
 
@@ -26,5 +27,9 @@ public class EventList {
 
     public List<Event> getEvents() {
         return events;
+    }
+
+    public void afficher() {
+        events.forEach(e -> DisplayService.getInstance().printTexte(e.description()));
     }
 }

@@ -3,6 +3,8 @@ package com.tp_note;
 import com.tp_note.entities.Event;
 import com.tp_note.entities.primitives.*;
 import com.tp_note.entities.event_types.Reunion;
+import com.tp_note.entities.lists.ListEvent;
+import com.tp_note.entities.lists.ListUser;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,7 +15,7 @@ class EventListTest {
 
     @Test
     void testAddEvent() {
-        EventList eventList = new EventList();
+        ListEvent eventList = new ListEvent();
         Event event = createSampleEvent();
 
         eventList.addEvent(event);
@@ -24,7 +26,7 @@ class EventListTest {
 
     @Test
     void testRemoveEvent() {
-        EventList eventList = new EventList();
+        ListEvent eventList = new ListEvent();
         Event event = createSampleEvent();
 
         eventList.addEvent(event);
@@ -36,7 +38,7 @@ class EventListTest {
 
     @Test
     void testGetEvents() {
-        EventList eventList = new EventList();
+        ListEvent eventList = new ListEvent();
         Event event1 = createSampleEvent();
         Event event2 = createSampleEvent();
 
@@ -52,10 +54,10 @@ class EventListTest {
     // Méthode utilitaire pour créer un événement
     private Event createSampleEvent() {
         EventTitle title = new EventTitle("Réunion de projet");
-        EventOwner owner = new EventOwner("Alice");
+        User owner = new User("Alice");
         EventDuration duration = new EventDuration(60);
 
-        return new Reunion(List.of("Alice","Bob"), "Salle 123", title, owner, LocalDateTime.now(), duration);
+        return new Reunion(new ListUser("Alice,Bob"), "Salle 123", title, owner, LocalDateTime.now(), duration);
     }
 }
 

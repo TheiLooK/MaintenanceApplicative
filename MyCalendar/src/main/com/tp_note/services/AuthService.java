@@ -50,15 +50,11 @@ public class AuthService {
         loggedUser = null;
     }
 
-    public User getLoggedUser() {
-        return loggedUser;
-    }
-
-    public User getUser(String username) {
-        return auths.stream().filter(auth -> auth.username.name().equals(username)).findFirst().orElse(null).username;
-    }
-
     public boolean isRegistered(String username) {
         return auths.stream().anyMatch(auth -> auth.username.name().equals(username));
+    }
+
+    public User getLoggedUser() {
+        return loggedUser;
     }
 }

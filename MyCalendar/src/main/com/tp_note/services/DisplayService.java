@@ -52,11 +52,6 @@ public class DisplayService {
         System.out.printf("║%s║%n", " ".repeat(longueur));
     }
 
-    public void printGrandTitre(String element) {
-        printTitre(element);
-        printSeparateur();
-    }
-
     public void pringMultipleLines(String element) {
         Arrays.stream(element.split("\n")).forEach(this::printTexte);
     }

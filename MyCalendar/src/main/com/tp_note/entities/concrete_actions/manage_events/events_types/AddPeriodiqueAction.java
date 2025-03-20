@@ -4,7 +4,6 @@ import com.tp_note.entities.Event;
 import com.tp_note.entities.concrete_actions.manage_events.AddEventAction;
 import com.tp_note.entities.event_types.Periodique;
 import com.tp_note.entities.primitives.EventDuration;
-import com.tp_note.entities.primitives.EventOwner;
 import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
@@ -38,10 +37,7 @@ public class AddPeriodiqueAction extends AddEventAction {
         displayService.printTexte("Ajout d'un événement périodique");
 
         String titre = displayService.printInputString("Entrez le titre de l'événement : ");
-        String proprietaire = AuthService.getInstance().getLoggedUser().name();
-
         LocalDateTime date = displayService.printInputDate();
-
         String dureeMinutes = displayService.printInputString("Entrez la durée de l'événement en minutes : ");
 
         // Spécification a l'événement périodique :
@@ -50,7 +46,7 @@ public class AddPeriodiqueAction extends AddEventAction {
         return new Periodique(
             Integer.parseInt(periode),
             new EventTitle(titre),
-            new EventOwner(proprietaire),
+            AuthService.getInstance().getLoggedUser(),
             date,
             new EventDuration(Integer.parseInt(dureeMinutes)
             )

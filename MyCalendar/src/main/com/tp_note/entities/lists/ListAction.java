@@ -1,12 +1,13 @@
-package com.tp_note.entities;
+package com.tp_note.entities.lists;
 
+import com.tp_note.entities.Action;
 import com.tp_note.services.DisplayService;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class ListAction extends Action {
-    List<Action> actions;
+    private final List<Action> actions;
 
     public ListAction(String name, List<Action> actions) {
         super(name);

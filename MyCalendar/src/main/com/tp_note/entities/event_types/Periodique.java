@@ -2,8 +2,8 @@ package com.tp_note.entities.event_types;
 
 import com.tp_note.entities.Event;
 import com.tp_note.entities.primitives.EventDuration;
-import com.tp_note.entities.primitives.EventOwner;
 import com.tp_note.entities.primitives.EventTitle;
+import com.tp_note.entities.primitives.User;
 
 import java.time.LocalDateTime;
 import java.util.stream.Stream;
@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class Periodique extends Event {
     public final int frequenceJours;
 
-    public Periodique(int frequenceJours, EventTitle title, EventOwner proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
+    public Periodique(int frequenceJours, EventTitle title, User proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
         super(title, proprietaire, dateDebut, dureeMinutes);
         this.frequenceJours = frequenceJours;
     }

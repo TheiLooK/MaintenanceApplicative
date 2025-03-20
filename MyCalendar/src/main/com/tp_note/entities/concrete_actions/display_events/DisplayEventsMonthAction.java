@@ -25,7 +25,6 @@ public class DisplayEventsMonthAction extends Action {
     @Override
     public void DO() {
         DisplayService displayService = DisplayService.getInstance();
-        CalendarManager calendarManager = AuthService.getInstance().getLoggedUser().calendar();
 
         int year = displayService.printInputInt("Entrez l'année (AAAA) : ");
         while (year < 0) {
@@ -40,10 +39,9 @@ public class DisplayEventsMonthAction extends Action {
         }
 
         LocalDateTime debut = LocalDateTime.of(year, month, 1, 0, 0);
-        LocalDateTime fin = debut.plusMonths(1);
 
         DisplayService.getInstance().printTitre("Liste des événements du mois " + month + " :");
-        calendarManager.eventsDansPeriode(debut, fin).events.stream().map(e -> e.description() + " : " + e.dateDebut).forEach(displayService::printTexte);
+        CalendarManager.getInstance().eventsDansPeriode(debut, debut.plusMonths(1)).afficher();
 
         DisplayService.getInstance().Continue();
         DisplayEventMenuAction.getInstance().DO();

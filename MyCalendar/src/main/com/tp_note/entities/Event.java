@@ -6,11 +6,11 @@ import java.time.LocalDateTime;
 
 public abstract class Event {
     public final EventTitle title;
-    public final EventOwner proprietaire;
+    public final User proprietaire;
     public final LocalDateTime dateDebut;
     public final EventDuration dureeMinutes;
 
-    protected Event(EventTitle title, EventOwner proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
+    protected Event(EventTitle title, User proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
         this.title = title;
         this.proprietaire = proprietaire;
         this.dateDebut = dateDebut;
@@ -21,5 +21,9 @@ public abstract class Event {
 
     public boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin) {
         return dateDebut.isAfter(debut) && dateDebut.isBefore(fin);
+    }
+
+    public boolean hasAccess(User user) {
+        return proprietaire.equals(user);
     }
 }
