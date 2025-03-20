@@ -6,7 +6,7 @@ Gestionnaire d'Événements & Calendrier
 - [x] Ajouter un nouveau type d'événement au calendrier.
 - [x] Obtenir la liste des événements pour une période donnée.
 - [ ] Détecter automatiquement les conflits entre événements (chevauchement horaire).
-- [ ] Générer une description spécifique à chaque type d'événement.
+- [x] Générer une description spécifique à chaque type d'événement.
 - [ ] Pouvoir supprimer un événement par son identifiant métier (ajouter un EventId).
 
 ## Fonctionalités ajoutées :
