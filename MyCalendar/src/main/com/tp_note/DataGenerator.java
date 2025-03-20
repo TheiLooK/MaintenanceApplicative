@@ -53,5 +53,9 @@ public class DataGenerator {
         CalendarManager.getInstance().addEvent(event1);
         CalendarManager.getInstance().addEvent(event2);
         CalendarManager.getInstance().addEvent(event3);
+
+        AuthService.getInstance().logOut();
+
+        DisplayService.getInstance().printTexte("Test data generated.");
     }
 }

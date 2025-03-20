@@ -114,7 +114,7 @@ public class DisplayService {
     }
 
     public void pressEnter() {
-        this.printTexte("Appuyez sur Entrée pour continuer");
+        System.out.print("║ Appuyez sur Entrée pour continuer : ");
         this.scanner.nextLine();
     }
 }
