@@ -28,7 +28,7 @@ public class ActionList extends Action {
 
     public void displayActions() {
         DisplayService.getInstance().printEspace();
-        DisplayService.getInstance().printSeparateur();
+        DisplayService.getInstance().printSpacer();
         DisplayService.getInstance().printTitre(name);
         IntStream.range(0, actions.size())
                 .mapToObj(i -> String.format("%d - %s", i + 1, actions.get(i).getName()))

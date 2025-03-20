@@ -8,8 +8,8 @@ public class Main {
     public static void main(String[] args) throws LogInException {
         DisplayService displayService = DisplayService.getInstance();
         displayService.printHaut();
-
-        displayService.pringMultipleLines("""
+        displayService.printEspace();
+        displayService.printMultipleLines("""
                  ██████╗ █████╗ ██╗     ███████╗███╗   ██╗██████╗  █████╗ ██████╗     ███╗   ███╗ █████╗ ███╗   ██╗ █████╗  ██████╗ ███████╗██████╗\s
                 ██╔════╝██╔══██╗██║     ██╔════╝████╗  ██║██╔══██╗██╔══██╗██╔══██╗    ████╗ ████║██╔══██╗████╗  ██║██╔══██╗██╔════╝ ██╔════╝██╔══██╗
                 ██║     ███████║██║     █████╗  ██╔██╗ ██║██║  ██║███████║██████╔╝    ██╔████╔██║███████║██╔██╗ ██║███████║██║  ███╗█████╗  ██████╔╝
@@ -18,7 +18,7 @@ public class Main {
                  ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
                 """);
         displayService.printEspace();
-        displayService.printSeparateur();
+        displayService.printSpacer();
 
         DataGenerator.generate();
 

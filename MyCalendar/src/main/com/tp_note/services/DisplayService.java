@@ -44,7 +44,7 @@ public class DisplayService {
         System.out.println(texte);
     }
 
-    public void printSeparateur() {
+    public void printSpacer() {
         System.out.printf("╠%s╣%n", "═".repeat(longueur));
     }
 
@@ -52,7 +52,7 @@ public class DisplayService {
         System.out.printf("║%s║%n", " ".repeat(longueur));
     }
 
-    public void pringMultipleLines(String element) {
+    public void printMultipleLines(String element) {
         Arrays.stream(element.split("\n")).forEach(this::printTexte);
     }
 
@@ -115,6 +115,6 @@ public class DisplayService {
 
     public void pressEnter() {
         System.out.print("║ Appuyez sur Entrée pour continuer : ");
-        this.scanner.nextLine();
+        scanner.nextLine();
     }
 }

@@ -6,6 +6,7 @@ import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.entities.primitives.User;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class PersonalEvent extends Event {
     public PersonalEvent(EventTitle title, User owner, LocalDateTime dateDebut, EventDuration duration) {
@@ -14,6 +15,14 @@ public class PersonalEvent extends Event {
 
     @Override
     public String description() {
-        return title.title() + " le " + dateDebut.toString() + " durée : " + dureeMinutes.duration() + " minutes";
+        List<String> content = List.of(
+                "Titre : " + title.title(),
+                "Propriétaire : " + proprietaire.name(),
+                "Date : " + dateDebut.toLocalDate(),
+                "Heure : " + dateDebut.toLocalTime().toString().substring(0, 5),
+                "Durée : " + dureeMinutes.duration() + " minutes"
+        );
+
+        return generateDescription(content, "Événement Personnel");
     }
 }

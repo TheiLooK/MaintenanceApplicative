@@ -8,6 +8,8 @@ import com.tp_note.entities.primitives.User;
 import com.tp_note.entities.lists.UserList;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MeetingEvent extends Event {
     public final UserList participants;
@@ -21,7 +23,17 @@ public class MeetingEvent extends Event {
 
     @Override
     public String description() {
-        return String.format("%s le %s durée : %d minutes, lieu : %s, participants : %s", title.title(), dateDebut.toString(), dureeMinutes.duration(), meetingEventPlace, participants);
+        List<String> content = List.of(
+                "Titre : " + title.title(),
+                "Propriétaire : " + proprietaire.name(),
+                "Date : " + dateDebut.toLocalDate(),
+                "Heure : " + dateDebut.toLocalTime().toString().substring(0, 5),
+                "Durée : " + dureeMinutes.duration() + " minutes",
+                "Lieu : " + meetingEventPlace.toString(),
+                "Participants : " + participants.toString()
+        );
+
+        return generateDescription(content, "Réunion");
     }
 
     @Override

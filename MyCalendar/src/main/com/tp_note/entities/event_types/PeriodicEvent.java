@@ -7,6 +7,8 @@ import com.tp_note.entities.primitives.PeriodicEventFrequency;
 import com.tp_note.entities.primitives.User;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class PeriodicEvent extends Event {
@@ -19,7 +21,16 @@ public class PeriodicEvent extends Event {
 
     @Override
     public String description() {
-        return String.format("%s le %s durée : %d minutes, période : %d jours", title.title(), dateDebut.toString(), dureeMinutes.duration(), frequency.frequency());
+        List<String> content = List.of(
+                "Titre : " + title.title(),
+                "Propriétaire : " + proprietaire.name(),
+                "Date : " + dateDebut.toLocalDate(),
+                "Heure : " + dateDebut.toLocalTime().toString().substring(0, 5),
+                "Durée : " + dureeMinutes.duration() + " minutes",
+                "Périodicité : " + frequency.frequency() + " jours"
+        );
+
+        return generateDescription(content, "Événement Périodique");
     }
 
     @Override

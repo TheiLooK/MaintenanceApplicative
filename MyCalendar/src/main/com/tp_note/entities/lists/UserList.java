@@ -18,4 +18,13 @@ public class UserList {
     public boolean contains(User user) {
         return users.contains(user);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder list = new StringBuilder();
+        for (User user : users) {
+            list.append(user.name()).append(", ");
+        }
+        return list.substring(0, list.length() - 2);
+    }
 }

@@ -30,6 +30,6 @@ public class EventList {
     }
 
     public void display() {
-        events.forEach(e -> DisplayService.getInstance().printTexte(e.description()));
+        events.forEach(e -> DisplayService.getInstance().printMultipleLines(e.description()));
     }
 }
