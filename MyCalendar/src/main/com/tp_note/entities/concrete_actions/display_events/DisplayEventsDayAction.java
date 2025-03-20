@@ -1,9 +1,7 @@
 package com.tp_note.entities.concrete_actions.display_events;
 
 import com.tp_note.entities.Action;
-import com.tp_note.entities.Event;
 import com.tp_note.entities.concrete_actions.menus.DisplayEventMenuAction;
-import com.tp_note.services.AuthService;
 import com.tp_note.services.CalendarManager;
 import com.tp_note.services.DisplayService;
 
