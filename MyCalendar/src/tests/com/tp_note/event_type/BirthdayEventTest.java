@@ -1,4 +1,4 @@
-package com.tp_note;
+package com.tp_note.event_type;
 
 import com.tp_note.entities.Event;
 import com.tp_note.entities.event_types.BirthdayEvent;

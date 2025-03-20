@@ -7,7 +7,7 @@ import com.tp_note.entities.event_types.MeetingEvent;
 import com.tp_note.entities.lists.UserList;
 import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventTitle;
-import com.tp_note.entities.primitives.MeetingEventPlace;
+import com.tp_note.entities.primitives.EventPlace;
 import com.tp_note.entities.primitives.PeriodicEventFrequency;
 import com.tp_note.exceptions.auth.LogInException;
 import com.tp_note.services.AuthService;
@@ -43,7 +43,7 @@ public class DataGenerator {
 
         Event event3 = new MeetingEvent(
                 new UserList("Bob,Alice"),
-                new MeetingEventPlace("IUT Charlemange - Salle 105"),
+                new EventPlace("IUT Charlemange - Salle 105"),
                 new EventTitle("Réunion de projet"),
                 AuthService.getInstance().getLoggedUser(),
                 LocalDateTime.of(2025, 3, 26, 10, 0),

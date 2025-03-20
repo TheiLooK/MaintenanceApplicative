@@ -5,7 +5,7 @@ import com.tp_note.entities.event_types.MeetingEvent;
 import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.entities.lists.UserList;
-import com.tp_note.entities.primitives.MeetingEventPlace;
+import com.tp_note.entities.primitives.EventPlace;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
@@ -53,7 +53,7 @@ public class AddReunionAction extends AddEventAction {
 
         return new MeetingEvent(
             new UserList(participants),
-            new MeetingEventPlace(place),
+            new EventPlace(place),
             new EventTitle(title),
             AuthService.getInstance().getLoggedUser(),
             date,

@@ -57,7 +57,7 @@ class EventListTest {
         User owner = new User("Alice");
         EventDuration duration = new EventDuration(60);
 
-        return new MeetingEvent(new UserList("Alice,Bob"), new MeetingEventPlace("Salle 105"), title, owner, LocalDateTime.now(), duration);
+        return new MeetingEvent(new UserList("Alice,Bob"), new EventPlace("Salle 105"), title, owner, LocalDateTime.now(), duration);
     }
 }
 

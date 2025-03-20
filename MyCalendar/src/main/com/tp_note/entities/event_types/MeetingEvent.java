@@ -3,7 +3,7 @@ package com.tp_note.entities.event_types;
 import com.tp_note.entities.Event;
 import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventTitle;
-import com.tp_note.entities.primitives.MeetingEventPlace;
+import com.tp_note.entities.primitives.EventPlace;
 import com.tp_note.entities.primitives.User;
 import com.tp_note.entities.lists.UserList;
 
@@ -12,12 +12,12 @@ import java.util.List;
 
 public class MeetingEvent extends Event {
     public final UserList participants;
-    public final MeetingEventPlace meetingEventPlace;
+    public final EventPlace eventPlace;
 
-    public MeetingEvent(UserList participants, MeetingEventPlace meetingEventPlace, EventTitle title, User owner, LocalDateTime dateDebut, EventDuration duration) {
+    public MeetingEvent(UserList participants, EventPlace eventPlace, EventTitle title, User owner, LocalDateTime dateDebut, EventDuration duration) {
         super(title, owner, dateDebut, duration);
         this.participants = participants;
-        this.meetingEventPlace = meetingEventPlace;
+        this.eventPlace = eventPlace;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class MeetingEvent extends Event {
                 "Date : " + dateDebut.toLocalDate(),
                 "Heure : " + dateDebut.toLocalTime().toString().substring(0, 5),
                 "Durée : " + dureeMinutes.duration() + " minutes",
-                "Lieu : " + meetingEventPlace.toString(),
+                "Lieu : " + eventPlace.toString(),
                 "Participants : " + participants.toString()
         );
 
