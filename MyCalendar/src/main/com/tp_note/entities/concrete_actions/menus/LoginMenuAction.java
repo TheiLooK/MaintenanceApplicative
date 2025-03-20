@@ -9,12 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginMenuAction extends ListAction {
-    public LoginMenuAction() {
-        super("Bienvenue dans Calendar Manager. Veuillez vous connecter", new ArrayList<>(List.of(
-                new LoginAction(),
-                new RegisterAction(),
-                new ExitAction()
-        )));
+    private static LoginMenuAction instance;
 
+    private LoginMenuAction() {
+        super("Bienvenue dans Calendar Manager. Veuillez vous connecter", new ArrayList<>(List.of(
+                LoginAction.getInstance(),
+                RegisterAction.getInstance(),
+                ExitAction.getInstance()
+        )));
+    }
+
+    public static LoginMenuAction getInstance() {
+        if (instance == null) {
+            instance = new LoginMenuAction();
+        }
+        return instance;
     }
 }

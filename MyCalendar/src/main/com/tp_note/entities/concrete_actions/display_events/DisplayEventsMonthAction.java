@@ -9,8 +9,17 @@ import com.tp_note.services.DisplayService;
 import java.time.LocalDateTime;
 
 public class DisplayEventsMonthAction extends Action {
-    public DisplayEventsMonthAction() {
+    private static DisplayEventsMonthAction instance;
+
+    private DisplayEventsMonthAction() {
         super("Afficher les événements d'un MOIS précis");
+    }
+
+    public static DisplayEventsMonthAction getInstance() {
+        if (instance == null) {
+            instance = new DisplayEventsMonthAction();
+        }
+        return instance;
     }
 
     @Override
@@ -37,6 +46,6 @@ public class DisplayEventsMonthAction extends Action {
         calendarManager.eventsDansPeriode(debut, fin).events.stream().map(e -> e.description() + " : " + e.dateDebut).forEach(displayService::printTexte);
 
         DisplayService.getInstance().Continue();
-        new DisplayEventMenuAction().DO();
+        DisplayEventMenuAction.getInstance().DO();
     }
 }

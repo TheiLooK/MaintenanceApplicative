@@ -19,6 +19,6 @@ public class Main {
         displayService.printEspace();
         displayService.printSeparateur();
 
-        new LoginMenuAction().DO();
+        LoginMenuAction.getInstance().DO();
     }
 }

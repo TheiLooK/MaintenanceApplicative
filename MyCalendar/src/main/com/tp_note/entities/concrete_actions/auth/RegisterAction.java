@@ -6,8 +6,17 @@ import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
 public class RegisterAction extends Action {
-    public RegisterAction() {
+    private static RegisterAction instance;
+
+    private RegisterAction() {
         super("S'inscrire");
+    }
+
+    public static RegisterAction getInstance() {
+        if (instance == null) {
+            instance = new RegisterAction();
+        }
+        return instance;
     }
 
     @Override
@@ -30,6 +39,6 @@ public class RegisterAction extends Action {
 
         displayService.printTexte("Vous êtes inscrit");
 
-        new LoginMenuAction().DO();
+        LoginMenuAction.getInstance().DO();
     }
 }

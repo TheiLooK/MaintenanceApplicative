@@ -12,8 +12,17 @@ import com.tp_note.services.DisplayService;
 import java.time.LocalDateTime;
 
 public class AddRdvPersoAction extends AddEventAction {
-    public AddRdvPersoAction() {
+    private static AddRdvPersoAction instance;
+
+    private AddRdvPersoAction() {
         super("Ajouter un rendez-vous personnel");
+    }
+
+    public static AddRdvPersoAction getInstance() {
+        if (instance == null) {
+            instance = new AddRdvPersoAction();
+        }
+        return instance;
     }
 
     @Override

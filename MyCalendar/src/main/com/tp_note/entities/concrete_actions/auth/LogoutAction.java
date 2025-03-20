@@ -6,15 +6,23 @@ import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
 public class LogoutAction extends Action {
-    public LogoutAction() {
+    private static LogoutAction instance;
+
+    private LogoutAction() {
         super("Se déconnecter");
     }
 
+    public static LogoutAction getInstance() {
+        if (instance == null) {
+            instance = new LogoutAction();
+        }
+        return instance;
+    }
 
     @Override
     public void DO() {
         AuthService.getInstance().logOut();
         DisplayService.getInstance().printTexte("Vous êtes déconnecté");
-        new LoginMenuAction().DO();
+        LoginMenuAction.getInstance().DO();
     }
 }

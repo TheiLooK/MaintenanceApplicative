@@ -12,8 +12,17 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public class AddReunionAction extends AddEventAction {
-    public AddReunionAction() {
+    private static AddReunionAction instance;
+
+    private AddReunionAction() {
         super("Ajouter une réunion");
+    }
+
+    public static AddReunionAction getInstance() {
+        if (instance == null) {
+            instance = new AddReunionAction();
+        }
+        return instance;
     }
 
     @Override

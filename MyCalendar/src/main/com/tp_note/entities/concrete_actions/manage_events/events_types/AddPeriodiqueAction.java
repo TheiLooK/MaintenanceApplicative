@@ -12,8 +12,17 @@ import com.tp_note.services.DisplayService;
 import java.time.LocalDateTime;
 
 public class AddPeriodiqueAction extends AddEventAction {
-    public AddPeriodiqueAction() {
+    private static AddPeriodiqueAction instance;
+
+    private AddPeriodiqueAction() {
         super("Ajouter un événement périodique");
+    }
+
+    public static AddPeriodiqueAction getInstance() {
+        if (instance == null) {
+            instance = new AddPeriodiqueAction();
+        }
+        return instance;
     }
 
     @Override

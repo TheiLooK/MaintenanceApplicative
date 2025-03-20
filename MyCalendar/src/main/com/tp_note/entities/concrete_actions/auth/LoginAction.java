@@ -9,10 +9,18 @@ import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
 public class LoginAction extends Action {
-    public LoginAction() {
+    private static LoginAction instance;
+
+    private LoginAction() {
         super("Se connecter");
     }
 
+    public static LoginAction getInstance() {
+        if (instance == null) {
+            instance = new LoginAction();
+        }
+        return instance;
+    }
 
     @Override
     public void DO() {
@@ -37,13 +45,13 @@ public class LoginAction extends Action {
             displayService.printTexte("Vous êtes connecté");
         } catch (IncorrectPasswordException e) {
             displayService.printTexte("Mot de passe incorrect");
-            new LoginMenuAction().DO();
+            LoginMenuAction.getInstance().DO();
             return;
         } catch (LogInException e) {
             displayService.printTexte("Login incorrect");
-            new LoginMenuAction().DO();
+            LoginMenuAction.getInstance().DO();
             return;
         }
-        new ManageEventMenuAction().DO();
+        ManageEventMenuAction.getInstance().DO();
     }
 }

@@ -6,8 +6,17 @@ import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
 public class DisplayEventsAction extends Action {
-    public DisplayEventsAction() {
+    private static DisplayEventsAction instance;
+
+    private DisplayEventsAction() {
         super("Afficher les événements");
+    }
+
+    public static DisplayEventsAction getInstance() {
+        if (instance == null) {
+            instance = new DisplayEventsAction();
+        }
+        return instance;
     }
 
     @Override
@@ -15,6 +24,6 @@ public class DisplayEventsAction extends Action {
         DisplayService.getInstance().printTitre("Liste des événements :");
         AuthService.getInstance().getLoggedUser().calendar().afficherEvenements();
         DisplayService.getInstance().Continue();
-        new DisplayEventMenuAction().DO();
+        DisplayEventMenuAction.getInstance().DO();
     }
 }

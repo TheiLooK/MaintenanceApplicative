@@ -10,8 +10,17 @@ import com.tp_note.services.DisplayService;
 import java.time.LocalDateTime;
 
 public class DisplayEventsDayAction extends Action {
-    public DisplayEventsDayAction() {
+    private static DisplayEventsDayAction instance;
+
+    private DisplayEventsDayAction() {
         super("Afficher les événements d'un JOUR précis");
+    }
+
+    public static DisplayEventsDayAction getInstance() {
+        if (instance == null) {
+            instance = new DisplayEventsDayAction();
+        }
+        return instance;
     }
 
     @Override
@@ -36,6 +45,6 @@ public class DisplayEventsDayAction extends Action {
         calendarManager.eventsDansPeriode(date, date.plusDays(1)).events.stream().map(Event::description).forEach(displayService::printTexte);
 
         DisplayService.getInstance().Continue();
-        new DisplayEventMenuAction().DO();
+        DisplayEventMenuAction.getInstance().DO();
     }
 }

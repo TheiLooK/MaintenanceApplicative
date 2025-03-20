@@ -4,8 +4,17 @@ import com.tp_note.entities.Action;
 import com.tp_note.services.DisplayService;
 
 public class ExitAction extends Action {
-    public ExitAction() {
+    private static ExitAction instance;
+
+    private ExitAction() {
         super("Quitter l'application");
+    }
+
+    public static ExitAction getInstance() {
+        if (instance == null) {
+            instance = new ExitAction();
+        }
+        return instance;
     }
 
     @Override

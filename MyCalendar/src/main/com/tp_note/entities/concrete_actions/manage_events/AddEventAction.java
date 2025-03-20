@@ -17,7 +17,7 @@ public abstract class AddEventAction extends Action {
     public void DO() {
         AuthService.getInstance().getLoggedUser().calendar().ajouterEvent(event);
         DisplayService.getInstance().printTexte(String.format("L'événement %s a été ajouté", name));
-        new ManageEventMenuAction().DO();
+        ManageEventMenuAction.getInstance().DO();
     }
 
     protected abstract Event createEvent();
