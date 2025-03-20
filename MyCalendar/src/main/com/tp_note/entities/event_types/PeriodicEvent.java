@@ -19,7 +19,7 @@ public class PeriodicEvent extends Event {
 
     @Override
     public String description() {
-        return String.format("%s le %s durée : %d minutes, période : %d jours", title.title(), dateDebut.toString(), dureeMinutes.duration(), frequency);
+        return String.format("%s le %s durée : %d minutes, période : %d jours", title.title(), dateDebut.toString(), dureeMinutes.duration(), frequency.frequency());
     }
 
     @Override

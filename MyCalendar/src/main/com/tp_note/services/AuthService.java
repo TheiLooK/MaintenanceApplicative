@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AuthService {
-    private List<Auth> auths;
+    private final List<Auth> auths;
     private User loggedUser;
 
     private static AuthService instance;

@@ -47,9 +47,7 @@ class AuthServiceTest {
 
     @Test
     void testLogInUserNotFound() {
-        Exception exception = assertThrows(UserNotFoundException.class, () -> {
-            authService.logIn("unknownUser", "password123");
-        });
+        Exception exception = assertThrows(UserNotFoundException.class, () -> authService.logIn("unknownUser", "password123"));
 
         assertEquals(UserNotFoundException.class, exception.getClass());
     }
@@ -58,9 +56,7 @@ class AuthServiceTest {
     void testLogInIncorrectPassword() {
         authService.register("testUser", "correctPassword");
         
-        Exception exception = assertThrows(IncorrectPasswordException.class, () -> {
-            authService.logIn("testUser", "wrongPassword");
-        });
+        Exception exception = assertThrows(IncorrectPasswordException.class, () -> authService.logIn("testUser", "wrongPassword"));
 
         assertEquals(IncorrectPasswordException.class, exception.getClass());
     }
@@ -89,9 +85,7 @@ class AuthServiceTest {
         authService.register("testUser", "password123");
         assertDoesNotThrow(() -> authService.logIn("testUser", "password123"));
 
-        LogInException exception = assertThrows(LogInException.class, () -> {
-            authService.logIn("testUser", "password1234");
-        });
+        LogInException exception = assertThrows(LogInException.class, () -> authService.logIn("testUser", "password1234"));
 
         assertEquals(IncorrectPasswordException.class, exception.getClass());
     }

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class DisplayService {
     private int longueur;
-    private Scanner scanner;
+    private final Scanner scanner;
 
     private static DisplayService instance = null;
 
