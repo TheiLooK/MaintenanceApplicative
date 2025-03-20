@@ -2,11 +2,18 @@
 ## Mellano Louka IL1
 Gestionnaire d'Événements & Calendrier
 
-## Fonctionalités ajoutées :
-- Ajout d'un système connexions avec hachage des mots de passe
-- Amélioration de l'interface
-- Utilisation d'actions au lieu de conditions
+## Fonctionalités implémentées :
+- [ ] Ajouter un nouveau type d'événement au calendrier.
+- [ ] Obtenir la liste des événements pour une période donnée.
+- [ ] Détecter automatiquement les conflits entre événements (chevauchement horaire).
+- [ ] Générer une description spécifique à chaque type d'événement.
+- [ ] Pouvoir supprimer un événement par son identifiant métier (ajouter un EventId).
 
+## Fonctionalités ajoutées :
+- Ajout d'un système connexions avancé avec hachage des mots de passe
+- Amélioration de l'interface
+
+Temps de travail : environ 11h
 
 ### Exemple :
 ```
