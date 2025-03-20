@@ -7,6 +7,7 @@ import com.tp_note.entities.primitives.User;
 import com.tp_note.entities.primitives.BirthdayYear;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class BirthdayEvent extends Event {
     private final User celebratedPerson;
@@ -20,7 +21,16 @@ public class BirthdayEvent extends Event {
 
     @Override
     public String description() {
-        return "";
-    }
+        List<String> content = List.of(
+                "Titre : " + title.title(),
+                "Propriétaire : " + proprietaire.name(),
+                "Date : " + dateDebut.toLocalDate(),
+                "Heure : " + dateDebut.toLocalTime().toString().substring(0, 5),
+                "Durée : " + dureeMinutes.duration() + " minutes",
+                "Personne célébrée : " + celebratedPerson.name(),
+                "Age : " + (LocalDateTime.now().getYear() - birthdayYear.year())
+        );
 
+        return generateDescription(content, "Anniversaire");
+    }
 }

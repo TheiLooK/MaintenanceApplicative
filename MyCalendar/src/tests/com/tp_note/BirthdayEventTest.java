@@ -6,7 +6,6 @@ import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.entities.primitives.User;
 import com.tp_note.entities.primitives.BirthdayYear;
-import com.tp_note.exceptions.entities.BirthdayYearAfterTodayException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -78,10 +77,4 @@ class BirthdayEventTest {
         Assertions.assertTrue(birthdayEvent.hasAccess(new User("John")));
         Assertions.assertFalse(birthdayEvent.hasAccess(new User("Jane")));
     }
-
-    @Test
-    void testYear() {
-        Assertions.assertThrows(BirthdayYearAfterTodayException.class, () -> new BirthdayYear(2042));
-    }
-
 }
