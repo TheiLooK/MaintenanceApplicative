@@ -1,6 +1,6 @@
 package com.tp_note.entities.concrete_actions.menus;
 
-import com.tp_note.entities.ListAction;
+import com.tp_note.entities.lists.ListAction;
 import com.tp_note.entities.concrete_actions.ExitAction;
 import com.tp_note.entities.concrete_actions.auth.LoginAction;
 import com.tp_note.entities.concrete_actions.auth.RegisterAction;
@@ -15,7 +15,7 @@ public class LoginMenuAction extends ListAction {
         super("Bienvenue dans Calendar Manager. Veuillez vous connecter", new ArrayList<>(List.of(
                 LoginAction.getInstance(),
                 RegisterAction.getInstance(),
-                ExitAction.getInstance()
+                new ExitAction()
         )));
     }
 
