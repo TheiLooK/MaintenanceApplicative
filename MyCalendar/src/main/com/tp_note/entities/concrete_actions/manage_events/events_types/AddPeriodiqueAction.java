@@ -9,8 +9,6 @@ import com.tp_note.entities.primitives.PeriodicEventFrequency;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
-import java.time.LocalDateTime;
-
 public class AddPeriodiqueAction extends AddEventAction {
     private static AddPeriodiqueAction instance;
 
@@ -34,22 +32,18 @@ public class AddPeriodiqueAction extends AddEventAction {
     @Override
     protected Event createEvent() {
         DisplayService displayService = DisplayService.getInstance();
+        EventDetails details = getCommonEventDetails();
 
         displayService.printTexte("Ajout d'un événement périodique");
 
-        String title = displayService.printInputString("Entrez le titre de l'événement : ");
-        LocalDateTime date = displayService.printInputDate();
-        int duration = displayService.printInputInt("Entrez la durée de l'événement en minutes : ");
-
-        // Spécification a l'événement périodique :
         int period = displayService.printInputInt("Entrez la période de l'événement en jours : ");
 
         return new PeriodicEvent(
-            new PeriodicEventFrequency(period),
-            new EventTitle(title),
-            AuthService.getInstance().getLoggedUser(),
-            date,
-            new EventDuration(duration)
+                new PeriodicEventFrequency(period),
+                new EventTitle(details.title()),
+                AuthService.getInstance().getLoggedUser(),
+                details.date(),
+                new EventDuration(details.duration())
         );
     }
 }

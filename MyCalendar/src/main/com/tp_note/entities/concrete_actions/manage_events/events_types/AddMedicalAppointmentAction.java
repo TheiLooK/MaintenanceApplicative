@@ -10,8 +10,6 @@ import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
-import java.time.LocalDateTime;
-
 public class AddMedicalAppointmentAction extends AddEventAction {
     private static AddMedicalAppointmentAction instance;
 
@@ -35,25 +33,21 @@ public class AddMedicalAppointmentAction extends AddEventAction {
     @Override
     protected Event createEvent() {
         DisplayService displayService = DisplayService.getInstance();
+        EventDetails details = getCommonEventDetails();
 
         displayService.printTexte("Ajout d'un rendez-vous médical");
 
-        String title = displayService.printInputString("Entrez le titre du rendez-vous : ");
-        LocalDateTime date = displayService.printInputDate();
-        int duration = displayService.printInputInt("Entrez la durée du rendez-vous en minutes : ");
-
-        // Spécification du rendez-vous médical :
         String doctorName = displayService.printInputString("Entrez le nom du docteur : ");
         String speciality = displayService.printInputString("Entrez la spécialité du docteur : ");
         String place = displayService.printInputString("Entrez le lieu du rendez-vous : ");
 
         return new MedicalAppointmentEvent(
-            new Doctor(doctorName, speciality),
-            new EventPlace(place),
-            new EventTitle(title),
-            AuthService.getInstance().getLoggedUser(),
-            date,
-            new EventDuration(duration)
+                new Doctor(doctorName, speciality),
+                new EventPlace(place),
+                new EventTitle(details.title()),
+                AuthService.getInstance().getLoggedUser(),
+                details.date(),
+                new EventDuration(details.duration())
         );
     }
 }

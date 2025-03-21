@@ -1,5 +1,6 @@
 package com.tp_note.entities.concrete_actions.manage_events.events_types;
 
+import com.tp_note.entities.Event;
 import com.tp_note.entities.concrete_actions.manage_events.AddEventAction;
 import com.tp_note.entities.event_types.MeetingEvent;
 import com.tp_note.entities.primitives.EventDuration;
@@ -9,7 +10,6 @@ import com.tp_note.entities.primitives.EventPlace;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public class AddReunionAction extends AddEventAction {
@@ -33,31 +33,26 @@ public class AddReunionAction extends AddEventAction {
     }
 
     @Override
-    public MeetingEvent createEvent() {
+    protected Event createEvent() {
         DisplayService displayService = DisplayService.getInstance();
+        EventDetails details = getCommonEventDetails();
 
         displayService.printTexte("Ajout d'une réunion");
 
-        String title = displayService.printInputString("Entrez le titre de la réunion : ");
-        LocalDateTime date = displayService.printInputDate();
-        int duration = displayService.printInputInt("Entrez la durée de la réunion en minutes : ");
-
-        // Spécification de la réunion :
         String participants = displayService.printInputString("Entrez les participants de la réunion (séparés par des virgules) : ");
-        // Si in des participants n'existe pas, on demande à l'utilisateur de recommencer
         while (!Arrays.stream(participants.split(",")).allMatch(p -> AuthService.getInstance().isRegistered(p))) {
             displayService.printTexte("Un des participants n'existe pas, veuillez réessayer");
-            participants = displayService.printInputString("Entrez les participants de la réunion (séparés par des virgules ex: Jean,Michel) : ");
+            participants = displayService.printInputString("Entrez les participants de la réunion (séparés par des virgules) : ");
         }
         String place = displayService.printInputString("Entrez le lieu de la réunion : ");
 
         return new MeetingEvent(
-            new UserList(participants),
-            new EventPlace(place),
-            new EventTitle(title),
-            AuthService.getInstance().getLoggedUser(),
-            date,
-            new EventDuration(duration)
+                new UserList(participants),
+                new EventPlace(place),
+                new EventTitle(details.title()),
+                AuthService.getInstance().getLoggedUser(),
+                details.date(),
+                new EventDuration(details.duration())
         );
     }
 }

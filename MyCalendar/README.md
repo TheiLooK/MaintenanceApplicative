@@ -8,7 +8,7 @@ Gestionnaire d'Événements & Calendrier
 - [x] Obtenir la liste des événements pour une période donnée.
 - [ ] Détecter automatiquement les conflits entre événements (chevauchement horaire).
 - [x] Générer une description spécifique à chaque type d'événement.
-- [ ] Pouvoir supprimer un événement par son identifiant métier (ajouter un EventId).
+- [x] Pouvoir supprimer un événement par son identifiant métier (ajouter un EventId).
 
 ## Fonctionalités ajoutées :
 - Ajout d'un système connexions avancé avec hachage des mots de passe
@@ -16,7 +16,7 @@ Gestionnaire d'Événements & Calendrier
 
 Temps de travail : environ 11h
 
-### Exemple :
+### Exemple afficher les événements :
 ```
 ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║                                                                                                                                      ║
@@ -116,6 +116,142 @@ Temps de travail : environ 11h
 ║ 5 - Se déconnecter                                                                                                                   ║
 ║                                                                                                                                      ║
 ║ Votre choix :  5
+║ Vous êtes déconnecté                                                                                                                 ║
+║                                                                                                                                      ║
+╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                      [Bienvenue dans Calendar Manager. Veuillez vous connecter]                                      ║
+║                                                                                                                                      ║
+║ 1 - Se connecter                                                                                                                     ║
+║ 2 - S'inscrire                                                                                                                       ║
+║ 3 - Quitter l'application                                                                                                            ║
+║                                                                                                                                      ║
+║ Votre choix :  3
+║ Fermeture de l'application...                                                                                                        ║
+╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+```
+
+### Exemple supprimer un événement :
+```
+╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                                                                      ║
+║  ██████╗ █████╗ ██╗     ███████╗███╗   ██╗██████╗  █████╗ ██████╗     ███╗   ███╗ █████╗ ███╗   ██╗ █████╗  ██████╗ ███████╗██████╗  ║
+║ ██╔════╝██╔══██╗██║     ██╔════╝████╗  ██║██╔══██╗██╔══██╗██╔══██╗    ████╗ ████║██╔══██╗████╗  ██║██╔══██╗██╔════╝ ██╔════╝██╔══██╗ ║
+║ ██║     ███████║██║     █████╗  ██╔██╗ ██║██║  ██║███████║██████╔╝    ██╔████╔██║███████║██╔██╗ ██║███████║██║  ███╗█████╗  ██████╔╝ ║
+║ ██║     ██╔══██║██║     ██╔══╝  ██║╚██╗██║██║  ██║██╔══██║██╔══██╗    ██║╚██╔╝██║██╔══██║██║╚██╗██║██╔══██║██║   ██║██╔══╝  ██╔══██╗ ║
+║ ╚██████╗██║  ██║███████╗███████╗██║ ╚████║██████╔╝██║  ██║██║  ██║    ██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝███████╗██║  ██║ ║
+║  ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝ ║
+║                                                                                                                                      ║
+╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ Generating test data...                                                                                                              ║
+║ Test data generated.                                                                                                                 ║
+║                                                                                                                                      ║
+╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                      [Bienvenue dans Calendar Manager. Veuillez vous connecter]                                      ║
+║                                                                                                                                      ║
+║ 1 - Se connecter                                                                                                                     ║
+║ 2 - S'inscrire                                                                                                                       ║
+║ 3 - Quitter l'application                                                                                                            ║
+║                                                                                                                                      ║
+║ Votre choix :  1
+║ Entrez votre nom d'utilisateur :  admin
+║ Entrez votre mot de passe :  admin
+║ Vous êtes connecté                                                                                                                   ║
+║                                                                                                                                      ║
+╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                   [Menu Gestionnaire d'Événements]                                                   ║
+║                                                                                                                                      ║
+║ 1 - Menu de visualisation d'Événements                                                                                               ║
+║ 2 - Ajouter un rendez-vous personnel                                                                                                 ║
+║ 3 - Ajouter une réunion                                                                                                              ║
+║ 4 - Ajouter un événement périodique                                                                                                  ║
+║ 5 - Ajouter un anniversaire                                                                                                          ║
+║ 6 - Ajouter une conférence                                                                                                           ║
+║ 7 - Ajouter un rendez-vous médical                                                                                                   ║
+║ 8 - Ajouter une tâche                                                                                                                ║
+║ 9 - Supprimer un événement                                                                                                           ║
+║ 10 - Se déconnecter                                                                                                                  ║
+║                                                                                                                                      ║
+║ Votre choix :  9
+║ Entrez l'id de l'événement à supprimer :  1
+║ L'événement a été supprimé                                                                                                           ║
+║                                                                                                                                      ║
+╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                   [Menu Gestionnaire d'Événements]                                                   ║
+║                                                                                                                                      ║
+║ 1 - Menu de visualisation d'Événements                                                                                               ║
+║ 2 - Ajouter un rendez-vous personnel                                                                                                 ║
+║ 3 - Ajouter une réunion                                                                                                              ║
+║ 4 - Ajouter un événement périodique                                                                                                  ║
+║ 5 - Ajouter un anniversaire                                                                                                          ║
+║ 6 - Ajouter une conférence                                                                                                           ║
+║ 7 - Ajouter un rendez-vous médical                                                                                                   ║
+║ 8 - Ajouter une tâche                                                                                                                ║
+║ 9 - Supprimer un événement                                                                                                           ║
+║ 10 - Se déconnecter                                                                                                                  ║
+║                                                                                                                                      ║
+║ Votre choix :  1
+║                                                                                                                                      ║
+╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                 [Menu de visualisation d'Événements]                                                 ║
+║                                                                                                                                      ║
+║ 1 - Afficher les événements                                                                                                          ║
+║ 2 - Afficher les événements d'un MOIS précis                                                                                         ║
+║ 3 - Afficher les événements d'une SEMAINE précise                                                                                    ║
+║ 4 - Afficher les événements d'un JOUR précis                                                                                         ║
+║ 5 - Retour                                                                                                                           ║
+║                                                                                                                                      ║
+║ Votre choix :  1
+║                                                       [Liste des événements :]                                                       ║
+║                                                                                                                                      ║
+║ ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐ ║
+║ │ ===================================================== Événement Personnel ====================================================== │ ║
+║ │ Id : 0                                                                                                                           │ ║
+║ │ Titre : Corriger le TP de maintenance applicative                                                                                │ ║
+║ │ Propriétaire : admin                                                                                                             │ ║
+║ │ Date : 2025-03-26                                                                                                                │ ║
+║ │ Heure : 14:00                                                                                                                    │ ║
+║ │ Durée : 30 minutes                                                                                                               │ ║
+║ └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘ ║
+║ ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐ ║
+║ │ =========================================================== Réunion ============================================================ │ ║
+║ │ Id : 2                                                                                                                           │ ║
+║ │ Titre : Réunion de projet                                                                                                        │ ║
+║ │ Propriétaire : admin                                                                                                             │ ║
+║ │ Date : 2025-03-26                                                                                                                │ ║
+║ │ Heure : 10:00                                                                                                                    │ ║
+║ │ Durée : 30 minutes                                                                                                               │ ║
+║ │ Lieu : IUT Charlemange - Salle 105                                                                                               │ ║
+║ │ Participants : Bob, Alice                                                                                                        │ ║
+║ └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘ ║
+║ Appuyez sur Entrée pour continuer : 
+
+║                                                                                                                                      ║
+╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                 [Menu de visualisation d'Événements]                                                 ║
+║                                                                                                                                      ║
+║ 1 - Afficher les événements                                                                                                          ║
+║ 2 - Afficher les événements d'un MOIS précis                                                                                         ║
+║ 3 - Afficher les événements d'une SEMAINE précise                                                                                    ║
+║ 4 - Afficher les événements d'un JOUR précis                                                                                         ║
+║ 5 - Retour                                                                                                                           ║
+║                                                                                                                                      ║
+║ Votre choix :  5
+║                                                                                                                                      ║
+╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                   [Menu Gestionnaire d'Événements]                                                   ║
+║                                                                                                                                      ║
+║ 1 - Menu de visualisation d'Événements                                                                                               ║
+║ 2 - Ajouter un rendez-vous personnel                                                                                                 ║
+║ 3 - Ajouter une réunion                                                                                                              ║
+║ 4 - Ajouter un événement périodique                                                                                                  ║
+║ 5 - Ajouter un anniversaire                                                                                                          ║
+║ 6 - Ajouter une conférence                                                                                                           ║
+║ 7 - Ajouter un rendez-vous médical                                                                                                   ║
+║ 8 - Ajouter une tâche                                                                                                                ║
+║ 9 - Supprimer un événement                                                                                                           ║
+║ 10 - Se déconnecter                                                                                                                  ║
+║                                                                                                                                      ║
+║ Votre choix :  10
 ║ Vous êtes déconnecté                                                                                                                 ║
 ║                                                                                                                                      ║
 ╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣

@@ -10,7 +10,6 @@ import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public class AddConferenceEventAction extends AddEventAction {
@@ -36,14 +35,10 @@ public class AddConferenceEventAction extends AddEventAction {
     @Override
     protected Event createEvent() {
         DisplayService displayService = DisplayService.getInstance();
+        EventDetails details = getCommonEventDetails();
 
         displayService.printTexte("Ajout d'une conférence");
 
-        String title = displayService.printInputString("Entrez le titre de la conférence : ");
-        LocalDateTime date = displayService.printInputDate();
-        int duration = displayService.printInputInt("Entrez la durée de la conférence en minutes : ");
-
-        // Spécification de la conférence :
         String speakers = displayService.printInputString("Entrez les intervenants de la conférence (séparés par des virgules) : ");
         while (!Arrays.stream(speakers.split(",")).allMatch(p -> AuthService.getInstance().isRegistered(p))) {
             displayService.printTexte("Un des intervenants n'existe pas, veuillez réessayer");
@@ -52,12 +47,12 @@ public class AddConferenceEventAction extends AddEventAction {
         String place = displayService.printInputString("Entrez le lieu de la conférence : ");
 
         return new ConferenceEvent(
-            new UserList(speakers),
-            new EventPlace(place),
-            new EventTitle(title),
-            AuthService.getInstance().getLoggedUser(),
-            date,
-            new EventDuration(duration)
+                new UserList(speakers),
+                new EventPlace(place),
+                new EventTitle(details.title()),
+                AuthService.getInstance().getLoggedUser(),
+                details.date(),
+                new EventDuration(details.duration())
         );
     }
 }

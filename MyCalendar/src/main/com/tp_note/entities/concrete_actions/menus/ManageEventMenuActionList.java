@@ -1,5 +1,6 @@
 package com.tp_note.entities.concrete_actions.menus;
 
+import com.tp_note.entities.concrete_actions.manage_events.DeleteEventAction;
 import com.tp_note.entities.concrete_actions.manage_events.events_types.*;
 import com.tp_note.entities.lists.ActionList;
 import com.tp_note.entities.concrete_actions.auth.LogoutAction;
@@ -17,6 +18,7 @@ public class ManageEventMenuActionList extends ActionList {
                 AddConferenceEventAction.getInstance(),
                 AddMedicalAppointmentAction.getInstance(),
                 AddTaskAction.getInstance(),
+                DeleteEventAction.getInstance(),
                 LogoutAction.getInstance()
         )));
     }

@@ -36,7 +36,7 @@ public class CalendarManager {
     }
 
     public void removeEvent(Id id) {
-        return; // TODO
+        events.removeEvent(id);
     }
 
     private EventList getEventList(User user) {

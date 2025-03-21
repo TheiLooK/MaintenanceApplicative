@@ -10,8 +10,6 @@ import com.tp_note.entities.primitives.User;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
-import java.time.LocalDateTime;
-
 public class AddBirthdayAction extends AddEventAction {
     private static AddBirthdayAction instance;
 
@@ -35,16 +33,11 @@ public class AddBirthdayAction extends AddEventAction {
     @Override
     protected Event createEvent() {
         DisplayService displayService = DisplayService.getInstance();
+        EventDetails details = getCommonEventDetails();
 
         displayService.printTexte("Ajout d'un anniversaire");
 
-        String title = displayService.printInputString("Entrez le titre de l'événement : ");
-        LocalDateTime date = displayService.printInputDate();
-        int duration = displayService.printInputInt("Entrez la durée de l'événement en minutes : ");
-
-        // Spécification a l'événement anniversaire :
         String celebratedPerson = displayService.printInputString("Entrez le nom de la personne célébrée : ");
-        // Check si la personne célébrée est déjà dans la liste des utilisateurs
         while (!AuthService.getInstance().isRegistered(celebratedPerson)) {
             displayService.printTexte("La personne célébrée n'existe pas dans la liste des utilisateurs.");
             celebratedPerson = displayService.printInputString("Entrez le nom de la personne célébrée : ");
@@ -52,12 +45,12 @@ public class AddBirthdayAction extends AddEventAction {
         int birthdayYear = displayService.printInputInt("Entrez l'année de naissance de la personne célébrée : ");
 
         return new BirthdayEvent(
-            new User(celebratedPerson),
-            new BirthdayYear(birthdayYear),
-            new EventTitle(title),
-            AuthService.getInstance().getLoggedUser(),
-            date,
-            new EventDuration(duration)
+                new User(celebratedPerson),
+                new BirthdayYear(birthdayYear),
+                new EventTitle(details.title()),
+                AuthService.getInstance().getLoggedUser(),
+                details.date(),
+                new EventDuration(details.duration())
         );
     }
 }

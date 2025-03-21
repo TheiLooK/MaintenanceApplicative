@@ -9,23 +9,23 @@ import java.util.List;
 public abstract class Event {
     public final Id id;
     public final EventTitle title;
-    public final User proprietaire;
+    public final User owner;
     public final LocalDateTime dateDebut;
     public final EventDuration dureeMinutes;
     protected final int DISPLAY_WIDTH = 132;
 
-    protected Event(Id id, EventTitle title, User proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
+    protected Event(Id id, EventTitle title, User owner, LocalDateTime dateDebut, EventDuration dureeMinutes) {
         this.id = id;
         this.title = title;
-        this.proprietaire = proprietaire;
+        this.owner = owner;
         this.dateDebut = dateDebut;
         this.dureeMinutes = dureeMinutes;
     }
 
-    protected Event(EventTitle title, User proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
-        this.id = new Id(0); // TODO: generate id
+    protected Event(EventTitle title, User owner, LocalDateTime dateDebut, EventDuration dureeMinutes) {
+        this.id = Id.nextValue();
         this.title = title;
-        this.proprietaire = proprietaire;
+        this.owner = owner;
         this.dateDebut = dateDebut;
         this.dureeMinutes = dureeMinutes;
     }
@@ -75,6 +75,6 @@ public abstract class Event {
     }
 
     public boolean hasAccess(User user) {
-        return proprietaire.equals(user);
+        return owner.equals(user);
     }
 }

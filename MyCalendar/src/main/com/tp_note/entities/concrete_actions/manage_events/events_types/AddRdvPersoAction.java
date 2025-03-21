@@ -8,8 +8,6 @@ import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
-import java.time.LocalDateTime;
-
 public class AddRdvPersoAction extends AddEventAction {
     private static AddRdvPersoAction instance;
 
@@ -33,21 +31,15 @@ public class AddRdvPersoAction extends AddEventAction {
     @Override
     protected Event createEvent() {
         DisplayService displayService = DisplayService.getInstance();
+        EventDetails details = getCommonEventDetails();
 
         displayService.printTexte("Ajout d'un rendez-vous personnel");
 
-        String title = displayService.printInputString("Entrez le titre du rendes-vous : ");
-        LocalDateTime date = displayService.printInputDate();
-        int duration = displayService.printInputInt("Entrez la durée du rendez-vous en minutes : ");
-
-        // Spécification au rendez-vous personnel :
-        // Rien pour l'instant
-
         return new PersonalEvent(
-            new EventTitle(title),
-            AuthService.getInstance().getLoggedUser(),
-            date,
-            new EventDuration(duration)
+                new EventTitle(details.title()),
+                AuthService.getInstance().getLoggedUser(),
+                details.date(),
+                new EventDuration(details.duration())
         );
     }
 }

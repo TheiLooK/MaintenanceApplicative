@@ -27,7 +27,7 @@ public class EventList {
     }
 
     public void removeEvent(Id id) {
-        return; // TODO
+        events.removeIf(e -> e.id.equals(id));
     }
 
     public List<Event> getEvents() {

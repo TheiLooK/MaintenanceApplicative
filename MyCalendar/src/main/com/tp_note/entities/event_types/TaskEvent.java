@@ -20,8 +20,9 @@ public class TaskEvent extends Event {
     @Override
     public String description() {
         List<String> content = List.of(
+                "Id : " + id,
                 "Titre : " + title.title(),
-                "Propriétaire : " + proprietaire.name(),
+                "Propriétaire : " + owner.name(),
                 "Date : " + dateDebut.toLocalDate(),
                 "Heure : " + dateDebut.toLocalTime().toString().substring(0, 5),
                 "Durée : " + dureeMinutes.duration() + " minutes",

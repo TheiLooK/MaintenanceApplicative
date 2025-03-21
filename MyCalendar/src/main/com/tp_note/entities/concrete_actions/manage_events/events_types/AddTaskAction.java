@@ -9,8 +9,6 @@ import com.tp_note.entities.primitives.TaskData;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
-import java.time.LocalDateTime;
-
 public class AddTaskAction extends AddEventAction {
     private static AddTaskAction instance;
 
@@ -34,22 +32,18 @@ public class AddTaskAction extends AddEventAction {
     @Override
     protected Event createEvent() {
         DisplayService displayService = DisplayService.getInstance();
+        EventDetails details = getCommonEventDetails();
 
         displayService.printTexte("Ajout d'une tâche");
 
-        String title = displayService.printInputString("Entrez le titre de la tâche : ");
-        LocalDateTime date = displayService.printInputDate();
-        int duration = displayService.printInputInt("Entrez la durée de la tâche en minutes : ");
-
-        // Spécification de la tâche :
         String taskDescription = displayService.printInputString("Entrez la description de la tâche : ");
 
         return new TaskEvent(
-            new TaskData(taskDescription),
-            new EventTitle(title),
-            AuthService.getInstance().getLoggedUser(),
-            date,
-            new EventDuration(duration)
+                new TaskData(taskDescription),
+                new EventTitle(details.title()),
+                AuthService.getInstance().getLoggedUser(),
+                details.date(),
+                new EventDuration(details.duration())
         );
     }
 }

@@ -6,6 +6,8 @@ import com.tp_note.entities.concrete_actions.menus.ManageEventMenuActionList;
 import com.tp_note.services.CalendarManager;
 import com.tp_note.services.DisplayService;
 
+import java.time.LocalDateTime;
+
 public abstract class AddEventAction extends Action {
     protected Event event;
 
@@ -21,4 +23,17 @@ public abstract class AddEventAction extends Action {
     }
 
     protected abstract Event createEvent();
+
+    protected EventDetails getCommonEventDetails() {
+        DisplayService displayService = DisplayService.getInstance();
+
+        String title = displayService.printInputString("Entrez le titre de l'événement : ");
+        LocalDateTime date = displayService.printInputDate();
+        int duration = displayService.printInputInt("Entrez la durée de l'événement en minutes : ");
+
+        return new EventDetails(title, date, duration);
+    }
+
+    protected record EventDetails(String title, LocalDateTime date, int duration) {
+    }
 }
