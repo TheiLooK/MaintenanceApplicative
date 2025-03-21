@@ -1,6 +1,7 @@
 package com.tp_note.services;
 
 import com.tp_note.entities.Event;
+import com.tp_note.entities.primitives.Id;
 import com.tp_note.entities.primitives.User;
 import com.tp_note.entities.lists.EventList;
 
@@ -32,6 +33,10 @@ public class CalendarManager {
 
     public void addEvent(Event e) {
         events.addEvent(e);
+    }
+
+    public void removeEvent(Id id) {
+        return; // TODO
     }
 
     private EventList getEventList(User user) {

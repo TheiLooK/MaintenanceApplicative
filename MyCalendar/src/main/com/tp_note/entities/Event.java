@@ -7,13 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Event {
+    public final Id id;
     public final EventTitle title;
     public final User proprietaire;
     public final LocalDateTime dateDebut;
     public final EventDuration dureeMinutes;
     protected final int DISPLAY_WIDTH = 132;
 
+    protected Event(Id id, EventTitle title, User proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
+        this.id = id;
+        this.title = title;
+        this.proprietaire = proprietaire;
+        this.dateDebut = dateDebut;
+        this.dureeMinutes = dureeMinutes;
+    }
+
     protected Event(EventTitle title, User proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
+        this.id = new Id(0); // TODO: generate id
         this.title = title;
         this.proprietaire = proprietaire;
         this.dateDebut = dateDebut;

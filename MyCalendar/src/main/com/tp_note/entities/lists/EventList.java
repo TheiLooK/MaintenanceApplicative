@@ -1,6 +1,7 @@
 package com.tp_note.entities.lists;
 
 import com.tp_note.entities.Event;
+import com.tp_note.entities.primitives.Id;
 import com.tp_note.services.DisplayService;
 
 import java.util.ArrayList;
@@ -23,6 +24,10 @@ public class EventList {
 
     public void removeEvent(Event event) {
         events.remove(event);
+    }
+
+    public void removeEvent(Id id) {
+        return; // TODO
     }
 
     public List<Event> getEvents() {
