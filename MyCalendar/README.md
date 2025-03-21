@@ -11,12 +11,17 @@ Gestionnaire d'Événements & Calendrier
 - [x] Pouvoir supprimer un événement par son identifiant métier (ajouter un EventId).
 
 ## Fonctionalités ajoutées :
-- Ajout d'un système connexions avancé avec hachage des mots de passe
-- Amélioration de l'interface
+- [ ] Sérialisation/Désérialisation vers JSON. **+1**
+- [ ] Ajout d'une interface utilisateur minimale. **+3**
+- [x] Ajout d'un système connexions avancé avec hachage des mots de passe
+- [x] Amélioration de l'interface
 
-Temps de travail : environ 11h
+Temps de travail : +15h (c'est trop, je compte plus)
 
-### Exemple afficher les événements :
+## Diagramme des actions :
+![Diagramme des actions](src/ressources/diagramme_actions.png)
+
+## Exemple afficher les événements :
 ```
 ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║                                                                                                                                      ║
@@ -130,7 +135,7 @@ Temps de travail : environ 11h
 ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 ```
 
-### Exemple supprimer un événement :
+## Exemple supprimer un événement :
 ```
 ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║                                                                                                                                      ║
