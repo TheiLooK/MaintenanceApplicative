@@ -38,4 +38,10 @@ public class PeriodicEvent extends Event {
         return Stream.iterate(dateDebut, d -> !d.isAfter(fin), d -> d.plusDays(frequency.frequency()))
                 .anyMatch(d -> !d.isBefore(debut));
     }
+
+    @Override
+    public boolean isConflict(Event event) {
+        return Stream.iterate(dateDebut, d -> !d.isAfter(dateDebut.plusDays(frequency.frequency())), d -> d.plusDays(frequency.frequency()))
+                .anyMatch(d -> event.isInPeriod(d, d.plusMinutes(dureeMinutes.duration())));
+    }
 }

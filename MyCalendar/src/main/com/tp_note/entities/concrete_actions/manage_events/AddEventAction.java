@@ -3,6 +3,7 @@ package com.tp_note.entities.concrete_actions.manage_events;
 import com.tp_note.entities.Action;
 import com.tp_note.entities.Event;
 import com.tp_note.entities.concrete_actions.menus.ManageEventMenuActionList;
+import com.tp_note.exceptions.events.EventConflictException;
 import com.tp_note.services.CalendarManager;
 import com.tp_note.services.DisplayService;
 
@@ -17,7 +18,16 @@ public abstract class AddEventAction extends Action {
 
     @Override
     public void perform() {
-        CalendarManager.getInstance().addEvent(event);
+        try {
+            CalendarManager.getInstance().addEvent(event);
+        }
+        catch (EventConflictException e) {
+            DisplayService.getInstance().printTexte("L'évènement rentre en conflit avec un autre évènement déjà prévu.");
+            DisplayService.getInstance().printTexte("Veuillez réessayer.");
+            ManageEventMenuActionList.getInstance().perform();
+            return;
+        }
+
         DisplayService.getInstance().printTexte(String.format("L'événement %s a été ajouté", name));
         ManageEventMenuActionList.getInstance().perform();
     }

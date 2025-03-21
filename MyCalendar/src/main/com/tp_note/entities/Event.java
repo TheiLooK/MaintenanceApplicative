@@ -12,7 +12,7 @@ public abstract class Event {
     public final User owner;
     public final LocalDateTime dateDebut;
     public final EventDuration dureeMinutes;
-    protected final int DISPLAY_WIDTH = 132;
+    protected final int displayWidth = 132;
 
     protected Event(Id id, EventTitle title, User owner, LocalDateTime dateDebut, EventDuration dureeMinutes) {
         this.id = id;
@@ -54,16 +54,16 @@ public abstract class Event {
     }
 
     protected String generateDescription(List<String> content, String title) {
-        String border = "┌" + "─".repeat(DISPLAY_WIDTH - 2) + "┐\n";
-        String footer = "└" + "─".repeat(DISPLAY_WIDTH - 2) + "┘\n";
+        String border = "┌" + "─".repeat(displayWidth - 2) + "┐\n";
+        String footer = "└" + "─".repeat(displayWidth - 2) + "┘\n";
 
         List<String> formattedContent = new ArrayList<>();
-        formattedContent.add(formatTitle(title, DISPLAY_WIDTH));
+        formattedContent.add(formatTitle(title, displayWidth));
         formattedContent.addAll(content);
 
         StringBuilder description = new StringBuilder(border);
         for (String line : formattedContent) {
-            description.append(formatLine(line, DISPLAY_WIDTH)).append("\n");
+            description.append(formatLine(line, displayWidth)).append("\n");
         }
         description.append(footer);
 
@@ -80,5 +80,9 @@ public abstract class Event {
 
     public boolean hasAccess(User user) {
         return owner.equals(user);
+    }
+
+    public boolean isConflict(Event event) {
+        return dateDebut.isBefore(event.dateDebut.plusMinutes(event.dureeMinutes.duration())) && dateDebut.plusMinutes(dureeMinutes.duration()).isAfter(event.dateDebut);
     }
 }

@@ -20,7 +20,14 @@ public class Main {
         displayService.printEspace();
         displayService.printSpacer();
 
-        DataGenerator.generate();
+        try {
+            DataGenerator.generate();
+        }
+        catch (Exception e) {
+            displayService.printTexte("Erreur lors de la génération des données.");
+            displayService.printTexte("Veuillez réessayer.");
+            return;
+        }
 
         LoginMenuActionList.getInstance().perform();
     }

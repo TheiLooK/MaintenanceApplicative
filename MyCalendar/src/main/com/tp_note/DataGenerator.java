@@ -8,6 +8,8 @@ import com.tp_note.entities.event_types.TaskEvent;
 import com.tp_note.entities.lists.UserList;
 import com.tp_note.entities.primitives.*;
 import com.tp_note.exceptions.auth.LogInException;
+import com.tp_note.exceptions.auth.register.UserAlreadyExistsException;
+import com.tp_note.exceptions.events.EventConflictException;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.CalendarManager;
 import com.tp_note.services.DisplayService;
@@ -15,7 +17,7 @@ import com.tp_note.services.DisplayService;
 import java.time.LocalDateTime;
 
 public class DataGenerator {
-    public static void generate() throws LogInException {
+    public static void generate() throws LogInException, EventConflictException, UserAlreadyExistsException {
         DisplayService.getInstance().printTexte("Generating test data...");
 
         AuthService.getInstance().register("admin", "admin");

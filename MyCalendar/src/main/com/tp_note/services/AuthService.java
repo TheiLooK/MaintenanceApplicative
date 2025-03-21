@@ -6,6 +6,7 @@ import com.tp_note.entities.primitives.User;
 import com.tp_note.exceptions.auth.LogInException;
 import com.tp_note.exceptions.auth.log_in.IncorrectPasswordException;
 import com.tp_note.exceptions.auth.log_in.UserNotFoundException;
+import com.tp_note.exceptions.auth.register.UserAlreadyExistsException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,10 @@ public class AuthService {
         loggedUser = getUser.username;
     }
 
-    public void register(String user, String password) {
+    public void register(String user, String password) throws UserAlreadyExistsException {
+        if (isRegistered(user)) {
+            throw new UserAlreadyExistsException();
+        }
         auths.add(new Auth(new User(user), new Password(password)));
     }
 

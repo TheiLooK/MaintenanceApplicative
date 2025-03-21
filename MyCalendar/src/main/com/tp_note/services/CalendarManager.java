@@ -6,6 +6,8 @@ import com.tp_note.entities.lists.event.TaskEventList;
 import com.tp_note.entities.primitives.Id;
 import com.tp_note.entities.primitives.User;
 import com.tp_note.entities.lists.EventList;
+import com.tp_note.exceptions.events.DeleteEventException;
+import com.tp_note.exceptions.events.EventConflictException;
 
 import java.time.LocalDateTime;
 
@@ -33,11 +35,14 @@ public class CalendarManager {
         );
     }
 
-    public void addEvent(Event e) {
+    public void addEvent(Event e) throws EventConflictException {
+        if (events.isConflict(e)) {
+            throw new EventConflictException();
+        }
         events.addEvent(e);
     }
 
-    public void removeEvent(Id id) {
+    public void removeEvent(Id id) throws DeleteEventException {
         events.removeEvent(id);
     }
 

@@ -44,7 +44,7 @@ public class LoginAction extends Action {
             authService.logIn(login, password);
             displayService.printTexte("Vous êtes connecté");
         } catch (IncorrectPasswordException e) {
-            displayService.printTexte("Mot de passe incorrect");
+            displayService.printTexte(e.getMessage());
             LoginMenuActionList.getInstance().perform();
             return;
         } catch (LogInException e) {

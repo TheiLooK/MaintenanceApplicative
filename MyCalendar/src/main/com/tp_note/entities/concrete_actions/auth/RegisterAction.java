@@ -2,6 +2,7 @@ package com.tp_note.entities.concrete_actions.auth;
 
 import com.tp_note.entities.Action;
 import com.tp_note.entities.concrete_actions.menus.LoginMenuActionList;
+import com.tp_note.exceptions.auth.register.UserAlreadyExistsException;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
 
@@ -35,7 +36,13 @@ public class RegisterAction extends Action {
             password = displayService.printInputString("Entrez votre mot de passe : ");
         }
 
-        AuthService.getInstance().register(login, password);
+        try {
+            AuthService.getInstance().register(login, password);
+        } catch (UserAlreadyExistsException e) {
+            displayService.printTexte(e.getMessage());
+            LoginMenuActionList.getInstance().perform();
+            return;
+        }
 
         displayService.printTexte("Vous êtes inscrit");
 
