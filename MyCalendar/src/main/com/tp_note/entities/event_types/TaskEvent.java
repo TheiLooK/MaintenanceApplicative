@@ -32,4 +32,8 @@ public class TaskEvent extends Event {
 
         return generateDescription(content, "Tâche");
     }
+
+    public void checkTask() {
+        task.setDone();
+    }
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Event {
-    public final Id id;
+    public Id id;
     public final EventTitle title;
     public final User owner;
     public final LocalDateTime dateDebut;
@@ -72,6 +72,10 @@ public abstract class Event {
 
     public boolean isInPeriod(LocalDateTime debut, LocalDateTime fin) {
         return dateDebut.isAfter(debut) && dateDebut.isBefore(fin);
+    }
+
+    public void setId(int id) {
+        this.id = new Id(id);
     }
 
     public boolean hasAccess(User user) {

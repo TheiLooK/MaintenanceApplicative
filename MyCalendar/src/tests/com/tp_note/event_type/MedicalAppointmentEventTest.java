@@ -24,9 +24,12 @@ class MedicalAppointmentEventTest {
                 new EventDuration(60)
         );
 
+        medicalAppointmentEvent.setId(-13);
+
         String expectedDescription = """
                 ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
                 │ ===================================================== Rendez-vous Médical ====================================================== │
+                │ Id : -13                                                                                                                         │
                 │ Titre : Medical Appointment                                                                                                      │
                 │ Propriétaire : Alice                                                                                                             │
                 │ Date : 2023-10-10                                                                                                                │

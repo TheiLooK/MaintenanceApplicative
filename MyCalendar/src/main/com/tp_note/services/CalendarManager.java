@@ -1,6 +1,8 @@
 package com.tp_note.services;
 
 import com.tp_note.entities.Event;
+import com.tp_note.entities.event_types.TaskEvent;
+import com.tp_note.entities.lists.event.TaskEventList;
 import com.tp_note.entities.primitives.Id;
 import com.tp_note.entities.primitives.User;
 import com.tp_note.entities.lists.EventList;
@@ -49,5 +51,14 @@ public class CalendarManager {
 
     public EventList getEventList() {
         return getEventList(AuthService.getInstance().getLoggedUser());
+    }
+
+    public TaskEventList getTasks() {
+        return new TaskEventList(
+                getEventList().getEvents().stream()
+                .filter(TaskEvent.class::isInstance)
+                .map(e -> (TaskEvent) e)
+                .toList()
+        );
     }
 }

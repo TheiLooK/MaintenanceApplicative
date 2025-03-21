@@ -14,6 +14,7 @@ public class DisplayEventMenuActionList extends ActionList {
                 DisplayEventsMonthAction.getInstance(),
                 DisplayEventsWeekAction.getInstance(),
                 DisplayEventsDayAction.getInstance(),
+                DisplayTasksAction.getInstance(),
                 DisplayEventsBackAction.getInstance()
         )));
     }

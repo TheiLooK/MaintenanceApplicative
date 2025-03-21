@@ -4,11 +4,9 @@ import com.tp_note.entities.Event;
 import com.tp_note.entities.event_types.PeriodicEvent;
 import com.tp_note.entities.event_types.PersonalEvent;
 import com.tp_note.entities.event_types.MeetingEvent;
+import com.tp_note.entities.event_types.TaskEvent;
 import com.tp_note.entities.lists.UserList;
-import com.tp_note.entities.primitives.EventDuration;
-import com.tp_note.entities.primitives.EventTitle;
-import com.tp_note.entities.primitives.EventPlace;
-import com.tp_note.entities.primitives.PeriodicEventFrequency;
+import com.tp_note.entities.primitives.*;
 import com.tp_note.exceptions.auth.LogInException;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.CalendarManager;
@@ -50,9 +48,18 @@ public class DataGenerator {
                 new EventDuration(30)
         );
 
+        Event taskEvent = new TaskEvent(
+                new TaskData("Faire les courses"),
+                new EventTitle("Tache courses"),
+                AuthService.getInstance().getLoggedUser(),
+                LocalDateTime.of(2025, 3, 26, 12, 0),
+                new EventDuration(30)
+        );
+
         CalendarManager.getInstance().addEvent(event1);
         CalendarManager.getInstance().addEvent(event2);
         CalendarManager.getInstance().addEvent(event3);
+        CalendarManager.getInstance().addEvent(taskEvent);
 
         AuthService.getInstance().logOut();
 

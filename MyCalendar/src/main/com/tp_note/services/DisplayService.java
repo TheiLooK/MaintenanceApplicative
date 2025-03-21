@@ -66,14 +66,14 @@ public class DisplayService {
 
     public String printInputString(String message) {
         ajusterLongueurSiNecessaire(message);
-        String texte = String.format("║ %s ", message);
+        String texte = String.format("║ %s", message);
         System.out.print(texte);
         return scanner.nextLine();
     }
 
     public int printInputInt(String message) {
         ajusterLongueurSiNecessaire(message);
-        String texte = String.format("║ %s ", message);
+        String texte = String.format("║ %s", message);
         System.out.print(texte);
 
         int value;
@@ -90,18 +90,18 @@ public class DisplayService {
     }
 
     public LocalDateTime printInputDate() {
-        String date = this.printInputString("Entrez la date de la réunion (format : jj/mm/aaaa) : ");
+        String date = this.printInputString("Entrez la date de l'événement (format : jj/mm/aaaa) : ");
         // Si la date n'est pas valide, on demande à l'utilisateur de recommencer (avec jj comrpis entre 01 et 31, mm entre 01 et 12 et aaaa entre 1000 et 9999)
         while (!date.matches("([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/([1-9][0-9]{3})")) {
             this.printTexte("La date n'est pas valide, veuillez réessayer");
-            date = this.printInputString("Entrez la date de la réunion (format : jj/mm/aaaa) : ");
+            date = this.printInputString("Entrez la date de l'événement (format : jj/mm/aaaa) : ");
         }
 
-        String heure = this.printInputString("Entrez l'heure de la réunion (format : hh:mm) : ");
+        String heure = this.printInputString("Entrez l'heure de l'événement (format : hh:mm) : ");
         // Si l'heure n'est pas valide, on demande à l'utilisateur de recommencer (avec hh compris entre 00 et 23 et mm entre 00 et 59)
         while (!heure.matches("([0-1][0-9]|2[0-3]):[0-5][0-9]")) {
             this.printTexte("L'heure n'est pas valide, veuillez réessayer");
-            heure = this.printInputString("Entrez l'heure de la réunion (format : hh:mm) : ");
+            heure = this.printInputString("Entrez l'heure de l'événement (format : hh:mm) : ");
         }
 
         return LocalDateTime.of(

@@ -27,6 +27,7 @@ public abstract class AddEventAction extends Action {
     protected EventDetails getCommonEventDetails() {
         DisplayService displayService = DisplayService.getInstance();
 
+        displayService.printTexte("Ajout d'un événement");
         String title = displayService.printInputString("Entrez le titre de l'événement : ");
         LocalDateTime date = displayService.printInputDate();
         int duration = displayService.printInputInt("Entrez la durée de l'événement en minutes : ");

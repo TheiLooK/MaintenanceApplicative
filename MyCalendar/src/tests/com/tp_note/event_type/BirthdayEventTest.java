@@ -23,9 +23,12 @@ class BirthdayEventTest {
                 new EventDuration(60)
         );
 
+        birthdayEvent.setId(-12);
+
         String expectedDescription = """
                 ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
                 │ ========================================================= Anniversaire ========================================================= │
+                │ Id : -12                                                                                                                         │
                 │ Titre : Anniversaire de John                                                                                                     │
                 │ Propriétaire : John                                                                                                              │
                 │ Date : 2021-12-25                                                                                                                │
