@@ -11,8 +11,8 @@ Gestionnaire d'Événements & Calendrier
 - [x] Pouvoir supprimer un événement par son identifiant métier (ajouter un EventId).
 
 ## Fonctionalités ajoutées :
-- [ ] Sérialisation/Désérialisation vers JSON. **+1**
-- [ ] Ajout d'une interface utilisateur minimale. **+3**
+- [ ] Sérialisation/Désérialisation vers JSON. **+1** - Fonctionne à moitié donc je l'ai mis dans une branche (les users sont biens enregistrès et les évènements mais je n'ai pas réussi à lire le fichier d'évènements)
+- [x] Ajout d'une interface utilisateur minimale. **+3**
 - [x] Ajout d'un système connexions avancé avec hachage des mots de passe
 - [x] Amélioration de l'interface
 
