@@ -5,13 +5,17 @@ import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.entities.primitives.User;
 import com.tp_note.entities.primitives.BirthdayYear;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
+@NoArgsConstructor
 public class BirthdayEvent extends Event {
-    private final User celebratedPerson;
-    private final BirthdayYear birthdayYear;
+    private User celebratedPerson;
+    private BirthdayYear birthdayYear;
 
     public BirthdayEvent(User celebratedPerson, BirthdayYear birthdayYear, EventTitle title, User proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
         super(title, proprietaire, dateDebut, dureeMinutes);

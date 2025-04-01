@@ -13,7 +13,7 @@ Gestionnaire d'Événements & Calendrier
 ## Fonctionalités ajoutées :
 - [ ] Sérialisation/Désérialisation vers JSON. **+1**
 - [ ] Ajout d'une interface utilisateur minimale. **+3**
-- [x] Ajout d'un système connexions avancé avec hachage des mots de passe
+- [x] Ajout d'un système connexions avancé avec hashage des mots de passe
 - [x] Amélioration de l'interface
 
 Temps de travail : +15h (c'est trop, je compte plus)

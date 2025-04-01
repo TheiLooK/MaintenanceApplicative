@@ -20,10 +20,6 @@ public class DataGenerator {
     public static void generate() throws LogInException, EventConflictException, UserAlreadyExistsException {
         DisplayService.getInstance().printTexte("Generating test data...");
 
-        AuthService.getInstance().register("admin", "admin");
-        AuthService.getInstance().register("Bob", "jaimealice");
-        AuthService.getInstance().register("Alice", "jaimebob");
-
         AuthService.getInstance().logIn("admin", "admin");
 
         Event event1 = new PersonalEvent(

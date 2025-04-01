@@ -1,10 +1,12 @@
 package com.tp_note.entities.lists;
 
 import com.tp_note.entities.primitives.User;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class UserList {
     private final List<User> users;
 

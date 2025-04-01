@@ -1,17 +1,34 @@
 package com.tp_note.entities;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.tp_note.entities.event_types.*;
 import com.tp_note.entities.primitives.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@NoArgsConstructor
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = MeetingEvent.class, name = "MeetingEvent"),
+        @JsonSubTypes.Type(value = PeriodicEvent.class, name = "PeriodicEvent"),
+        @JsonSubTypes.Type(value = PersonalEvent.class, name = "PersonalEvent"),
+        @JsonSubTypes.Type(value = TaskEvent.class, name = "TaskEvent"),
+        @JsonSubTypes.Type(value = BirthdayEvent.class, name = "BirthdayEvent"),
+        @JsonSubTypes.Type(value = ConferenceEvent.class, name = "ConferenceEvent"),
+        @JsonSubTypes.Type(value = MedicalAppointmentEvent.class, name = "MedicalAppointmentEvent")
+})
 public abstract class Event {
     public Id id;
-    public final EventTitle title;
-    public final User owner;
-    public final LocalDateTime dateDebut;
-    public final EventDuration dureeMinutes;
+    public EventTitle title;
+    public User owner;
+    public LocalDateTime dateDebut;
+    public EventDuration dureeMinutes;
     protected final int displayWidth = 132;
 
     protected Event(Id id, EventTitle title, User owner, LocalDateTime dateDebut, EventDuration dureeMinutes) {

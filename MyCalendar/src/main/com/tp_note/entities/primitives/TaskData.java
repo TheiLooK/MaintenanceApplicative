@@ -1,5 +1,8 @@
 package com.tp_note.entities.primitives;
 
+import lombok.Getter;
+
+@Getter
 public class TaskData {
     private final String description;
     private boolean isDone ;
@@ -7,10 +10,6 @@ public class TaskData {
     public TaskData(String description) {
         this.description = description;
         this.isDone = false;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public boolean isDone() {

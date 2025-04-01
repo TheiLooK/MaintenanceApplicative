@@ -5,13 +5,17 @@ import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.entities.primitives.PeriodicEventFrequency;
 import com.tp_note.entities.primitives.User;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Stream;
 
+@Getter
+@NoArgsConstructor
 public class PeriodicEvent extends Event {
-    public final PeriodicEventFrequency frequency;
+    public PeriodicEventFrequency frequency;
 
     public PeriodicEvent(PeriodicEventFrequency frequency, EventTitle title, User owner, LocalDateTime dateDebut, EventDuration duration) {
         super(title, owner, dateDebut, duration);

@@ -2,10 +2,14 @@ package com.tp_note.entities.event_types;
 
 import com.tp_note.entities.Event;
 import com.tp_note.entities.primitives.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
+@NoArgsConstructor
 public class MedicalAppointmentEvent extends Event {
     private Doctor doctor;
     private EventPlace place;

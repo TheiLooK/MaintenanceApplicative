@@ -4,10 +4,12 @@ import com.tp_note.entities.Event;
 import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.entities.primitives.User;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@NoArgsConstructor
 public class PersonalEvent extends Event {
     public PersonalEvent(EventTitle title, User owner, LocalDateTime dateDebut, EventDuration duration) {
         super(title, owner, dateDebut, duration);

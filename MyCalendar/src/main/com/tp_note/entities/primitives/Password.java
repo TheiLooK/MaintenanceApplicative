@@ -1,13 +1,19 @@
 package com.tp_note.entities.primitives;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
 
+@Getter
+@NoArgsConstructor
 public class Password {
-    private final String hashedPassword;
-    private final String salt;
+    private String hashedPassword;
+    private String salt;
 
     public Password(String password) {
         this.salt = generateSalt();

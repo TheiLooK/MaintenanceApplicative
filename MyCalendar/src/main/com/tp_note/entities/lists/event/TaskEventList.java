@@ -1,5 +1,6 @@
 package com.tp_note.entities.lists.event;
 
+import com.tp_note.entities.Event;
 import com.tp_note.entities.event_types.TaskEvent;
 import com.tp_note.entities.lists.EventList;
 import com.tp_note.services.DisplayService;
@@ -11,6 +12,11 @@ public class TaskEventList extends EventList {
 
     public TaskEventList(List<TaskEvent> events) {
         this.events = events;
+    }
+
+    @Override
+    public List<Event> getEvents() {
+        return (List<Event>) (List<?>) events;
     }
 
     public void checkTaskEvent(int id) {

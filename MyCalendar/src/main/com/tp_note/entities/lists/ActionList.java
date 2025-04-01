@@ -2,10 +2,12 @@ package com.tp_note.entities.lists;
 
 import com.tp_note.entities.Action;
 import com.tp_note.services.DisplayService;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
+@Getter
 public class ActionList extends Action {
     private final List<Action> actions;
 

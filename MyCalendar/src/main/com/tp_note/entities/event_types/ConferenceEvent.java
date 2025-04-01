@@ -6,13 +6,17 @@ import com.tp_note.entities.primitives.EventDuration;
 import com.tp_note.entities.primitives.EventPlace;
 import com.tp_note.entities.primitives.EventTitle;
 import com.tp_note.entities.primitives.User;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
+@NoArgsConstructor
 public class ConferenceEvent extends Event {
-    private final UserList speakers;
-    private final EventPlace place;
+    private UserList speakers;
+    private EventPlace place;
 
     public ConferenceEvent(UserList speakers, EventPlace place, EventTitle title, User proprietaire, LocalDateTime dateDebut, EventDuration dureeMinutes) {
         super(title, proprietaire, dateDebut, dureeMinutes);

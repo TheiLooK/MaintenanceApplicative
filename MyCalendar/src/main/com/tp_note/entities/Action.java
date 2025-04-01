@@ -1,5 +1,8 @@
 package com.tp_note.entities;
 
+import lombok.Getter;
+
+@Getter
 public abstract class Action {
     protected String name;
 
@@ -8,8 +11,4 @@ public abstract class Action {
     }
 
     public abstract void perform();
-
-    public String getName() {
-        return name;
-    }
 }

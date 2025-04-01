@@ -9,13 +9,15 @@ import com.tp_note.exceptions.events.delete_event.EventMustBeOwnerToDeleteExcept
 import com.tp_note.exceptions.events.delete_event.EventNotFoundException;
 import com.tp_note.services.AuthService;
 import com.tp_note.services.DisplayService;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class EventList {
-    private final List<Event> events;
+    private List<Event> events;
 
     public EventList(List<Event> events) {
         this.events = events;
@@ -23,6 +25,10 @@ public class EventList {
 
     public EventList() {
         this.events = new ArrayList<>();
+    }
+
+    public static EventList empty() {
+        return new EventList(new ArrayList<>());
     }
 
     public void addEvent(Event event) {
@@ -45,11 +51,6 @@ public class EventList {
         }
 
         events.remove(eventToRemove);
-
-    }
-
-    public List<Event> getEvents() {
-        return events;
     }
 
     public void display() {
